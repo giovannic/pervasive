@@ -1,48 +1,94 @@
-#include "Timer.h"
+//## Starting code for tutorial 2 of the wireless sensor network
+//## programing module of the pervasive systems course.
 
-uint32_t flashes = 0;
+#include "Timer.h"
 
 module BlinkC
 {
-  uses interface Timer<TMilli> as Timer0;
-  uses interface Timer<TMilli> as FlashTimer;
+  uses interface Timer<TMilli> as SensorTimer;
+  uses interface Timer<TMilli> as LedTimer;
   uses interface Leds;
   uses interface Boot;
   uses interface Read<uint16_t> as Temp_Sensor;
+
+  uses interface Packet;
+  uses interface AMPacket;
+  uses interface AMSend;
+  uses interface SplitControl as AMControl;
 }
 implementation
 {
+
+  typedef nx_struct BlinkToRadioMsg {
+    nx_uint16_t nodeid;
+    nx_uint16_t temp;
+  } BlinkToRadioMsg;
+
+  bool busy = FALSE;
+  message_t pkt;
+
+  enum{
+    SAMPLE_PERIOD = 1024,
+    LED_FLASH_PERIOD = 50,
+  };
+
+  uint16_t temperature_value;
+
   event void Boot.booted()
   {
-    call Timer0.startPeriodic( 5000 );
+    temperature_value = 0;
+    call AMControl.start();
   }
 
-  event void Timer0.fired()
+  event void SensorTimer.fired()
   {
-    call Temp_Sensor.read();
+    
     call Leds.led0Toggle();
-    call FlashTimer.startPeriodic(50);
+    call Temp_Sensor.read();
+    call LedTimer.startOneShot(LED_FLASH_PERIOD);
+    
   }
 
-  task void processFlash()
+  event void LedTimer.fired()
   {
-    if(flashes++ == 10)
-    {
-      call FlashTimer.stop();
-      flashes = 0;
+    
+    call Leds.led0Toggle();
+  
+  }
+
+  event void AMSend.sendDone(message_t *msg, error_t err)
+  {
+    if (&pkt == msg) {
+      busy = FALSE;
     }
   }
 
-  event void FlashTimer.fired()
+  event void AMControl.startDone(error_t err)
   {
-    call Leds.led0Toggle();
-    post processFlash();
+    if (err == SUCCESS) {
+      call SensorTimer.startPeriodic(SAMPLE_PERIOD);
+    }
+    else {
+      call AMControl.start();
+    }
   }
 
-  event void Temp_Sensor.readDone(error_t result, uint16_t data)
+  event void AMControl.stopDone(error_t err)
   {
-
+    // TODO
   }
 
+  /******** Sensor Reading code *******************/
+  event void Temp_Sensor.readDone(error_t result, uint16_t data) {
+    temperature_value = data;
+
+    if (!busy) {
+      BlinkToRadioMsg* btrpkt = (BlinkToRadioMsg*)(call Packet.getPayload(&pkt, sizeof (BlinkToRadioMsg)));
+      btrpkt->nodeid = TOS_NODE_ID;
+      btrpkt->temp = temperature_value;
+      if (call AMSend.send(AM_BROADCAST_ADDR, &pkt, sizeof(BlinkToRadioMsg)) == SUCCESS) {
+        busy = TRUE;
+      }
+    }
+  }
 }
-
