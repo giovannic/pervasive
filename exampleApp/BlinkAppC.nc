@@ -1,6 +1,8 @@
 //## SStarting code for tutorial2 of the wireless sensor network
 //## programing module of the pervasive systems course.
 
+#define AM_CONST 6
+
 configuration BlinkAppC
 {
 }
@@ -13,8 +15,8 @@ implementation
  
   // TODO Parametrize that
   components ActiveMessageC;
-  components new AMSenderC(6);
-  // components new AMReceiverC(6);
+  components new AMSenderC(AM_CONST);
+  //components new AMReceiverC(AM_CONST);
 
   BlinkC -> MainC.Boot;
 
@@ -27,6 +29,7 @@ implementation
   BlinkC.AMPacket -> AMSenderC;
   BlinkC.AMSend -> AMSenderC;
   BlinkC.AMControl -> ActiveMessageC;
+//  BlinkC.AMRecieve
 }
 
 
