@@ -4,6 +4,7 @@
 typedef nx_struct {
   nx_uint16_t nodeid;
   nx_uint16_t temp;
+  nx_uint16_t light;
 } BlinkToRadioMsg;
 
 #endif
