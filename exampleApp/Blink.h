@@ -1,0 +1,12 @@
+#ifndef BLINK_H
+#define BLINK_H
+
+enum {
+  AM_BLINKTORADIOMSG = 6,
+  TIMER_PERIOD_MILLI = 1000,
+  SAMPLE_PERIOD = 1024,
+  LED_FLASH_PERIOD = 50,
+  TEMP_MAX = 30
+};
+
+#endif
