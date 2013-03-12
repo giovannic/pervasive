@@ -44,14 +44,19 @@ uint16_t latest_temp(temp_state* t){
 
 void temp_push(temp_state* t, uint16_t data){
   //add data
+  uint16_t overwritten;
   float last_avg = t->avgs[t->index]; 
-  //t->index = (t->index + 1) % TEMP_MAX;
-  int16_t overwritten = t->values[t->index];
-  //t->values[t->index] = data;
+  t->index = (t->index + 1) % TEMP_MAX; 
+  overwritten = t->values[t->index];
+  t->values[t->index] = data;
 
   //update average
-  uint8_t total = t->full ? t->index : TEMP_MAX;
-  t->avgs[t->index] = last_avg - (float)overwritten/total + (float)data/total;
+  if (t->full)
+  {
+    t->avgs[t->index] = last_avg - (float)overwritten/TEMP_MAX + (float)data/TEMP_MAX;
+  } else {
+    t->avgs[t->index] = (last_avg*(t->index - 1) + (float)data)/t->index;
+  }
  
   //update full
   if (t->index == TEMP_MAX - 1)
