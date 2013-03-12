@@ -28,11 +28,13 @@ implementation
   message_t pkt;
 
   uint16_t temp_values[TEMP_MAX];
-  uint8_t temp_index = 0;
+  uint8_t temp_index = TEMP_MAX - 1;    // This is a complete hack to make sure that temp_index is always pointing at curr index not curr index +1
   bool temp_set = FALSE;
 
   uint16_t light_value;
   bool light_set = FALSE;
+  float avg_temp;
+  int num_temp_readings = 0;
   
   event void Boot.booted()
   {
@@ -84,9 +86,10 @@ implementation
   }
   
   event void Temp_Sensor.readDone(error_t result, uint16_t data) {
-    temp_index = (temp_index + 1) % TEMP_MAX;
     temp_values[temp_index] = data; 
     temp_set = TRUE;
+    temp_index = (temp_index + 1) % TEMP_MAX;
+    num_temp_readings++;
     post check_send();
   }
 
@@ -113,6 +116,20 @@ implementation
     call Temp_Sensor.read();
     call Light_Sensor.read();
   }
+
+  task void avg_temperature()
+  {
+    uint16_t sum = 0;
+    int i, readings;
+
+    readings = ( num_temp_readings < TEMP_MAX ) ? temp_index : TEMP_MAX;
+
+    for( i = 0; i < readings; i++ ) {
+      sum += temp_values[i];
+    }
+
+    avg_temp = (float) sum / readings;
+  } 
 
   /******** Sensor Recieve code *******************/
 
