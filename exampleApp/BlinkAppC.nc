@@ -15,9 +15,7 @@ implementation
   components new TempC() as Temp_Sensor;
   components new PhotoC() as Light_Sensor;
  
-  components ActiveMessageC;
-  components new AMSenderC(AM_TYPE);
-  components new AMReceiverC(AM_TYPE);
+  components TimeSyncMessageC;
 
   BlinkC -> MainC.Boot;
 
@@ -25,15 +23,16 @@ implementation
   BlinkC.ReceiveLedTimer -> ReceiveLedTimer;
   BlinkC.SendLedTimer -> SendLedTimer;
   BlinkC.Leds -> LedsC;
+  
   BlinkC.Temp_Sensor -> Temp_Sensor;
   BlinkC.Light_Sensor -> Light_Sensor;
 
-  BlinkC.Packet -> AMSenderC;
-  BlinkC.AMPacket -> AMSenderC;
-  BlinkC.AMSend -> AMSenderC;
-  BlinkC.Receive -> AMReceiverC;
-  BlinkC.AMControl -> ActiveMessageC;
+  BlinkC.TimeSyncAMSend -> TimeSyncMessageC.TimeSyncAMSendMilli[AM_BLINKTORADIOMSG];
+  BlinkC.TimeSyncPacket -> TimeSyncMessageC.TimeSyncPacketMilli;
+  BlinkC.Receive -> TimeSyncMessageC.Receive[AM_BLINKTORADIOMSG];
+  BlinkC.AMControl -> TimeSyncMessageC;
+
+  components LocalTimeMilliC;
+  BlinkC.LocalTime -> LocalTimeMilliC;
 }
 
-
-// MIG takes a header file with message spec and will generate java classes for it
