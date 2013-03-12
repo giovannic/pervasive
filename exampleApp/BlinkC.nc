@@ -134,24 +134,10 @@ implementation
     call Light_Sensor.read();
   }
 
-  task void avg_temperature()
-  {
-    uint16_t sum = 0;
-    int i, readings;
-    float avg_temp;
-
-    readings = ( !temp.full ) ? temp.index : TEMP_MAX;
-
-    for( i = 0; i < readings; i++ ) {
-      sum += temp.values[i];
-    }
-
-    avg_temp = (float) sum / readings;
-  }
-
   task void recent_temp_increase() 
   {
-    int16_t max = -32678;
+    int16_t max_val = -32678;
+    int16_t max_avg = -32678;
     int i, check_index, readings;
 
     readings = ( !temp.full ) ? temp.index : TEMP_MAX;
@@ -159,18 +145,28 @@ implementation
     for( i = 0; i < readings; i++ ) {
 
       check_index = (temp.index - i) % readings;
+
       if( check_index < 0 ) {
         check_index += readings;
       }
 
-      if( temp.values[check_index] > max ) {
-        max = temp.values[check_index];
+      if( temp.values[check_index] > max_val ) {
+        max_val = temp.values[check_index];
       }
-      else if( (max - temp.values[check_index]) >= 5 ) {
+      else if( temp.avgs[check_index] > max_avg ) {
+        max_avg = temp.avgs[check_index];
+      }
+      else if( max_avg - temp.avgs[check_index] >= 20 ) {
         //TODO post alarm call
         break;
       }
+      else if( (max_val - temp.values[check_index]) >= 5 ) {
+        //TODO post alarm call
+        break;
+      }
+
     }
+
   } 
 
   /******** Sensor Recieve code *******************/
