@@ -131,21 +131,6 @@ implementation
     call Light_Sensor.read();
   }
 
-  task void avg_temperature()
-  {
-    int16_t sum = 0;
-    int i, readings;
-    float avg_temp;
-
-    readings = ( !temp.full ) ? temp.index : TEMP_MAX;
-
-    for( i = 0; i < readings; i++ ) {
-      sum += temp.values[i];
-    }
-
-    avg_temp = (float) sum / readings;
-  }
-
   task void recent_temp_increase() 
   {
     int16_t max_val = -32678;
