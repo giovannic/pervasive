@@ -8,20 +8,22 @@
 
 module BlinkC
 {
-  uses interface Timer<TMilli> as SensorTimer;
-  uses interface Timer<TMilli> as SendLedTimer;
-  uses interface Timer<TMilli> as ReceiveLedTimer;
-  uses interface Leds;
-  uses interface Boot;
-  uses interface Read<uint16_t> as Temp_Sensor;
-  uses interface Read<uint16_t> as Light_Sensor;
+	uses {
+		interface Timer<TMilli> as SensorTimer;
+		interface Timer<TMilli> as SendLedTimer;
+		interface Timer<TMilli> as ReceiveLedTimer;
+		interface Leds;
+		interface Boot;
+		interface Read<uint16_t> as Temp_Sensor;
+		interface Read<uint16_t> as Light_Sensor;
 
-  uses interface Packet;
-  uses interface AMPacket;
-  uses interface AMSend;
-  uses interface SplitControl as AMControl;
-
-  uses interface Receive; 
+		interface SplitControl as AMControl;
+		interface Receive; 
+		interface TimeSyncAMSend<TMilli,uint32_t>;
+		interface TimeSyncPacket<TMilli,uint32_t>;
+  	
+		interface LocalTime<TMilli>;
+	}
 }
 implementation
 {
@@ -70,22 +72,23 @@ implementation
     light.neighbour_light = FALSE;
   }
 
-  event void AMSend.sendDone(message_t *msg, error_t err)
+  event void TimeSyncAMSend.sendDone(message_t *msg, error_t err)
   {
     if (&pkt == msg) {
       busy = FALSE;
-      call Packet.clear(&pkt);
+      //call TimeSyncPacket.clear(&pkt);
       temp.value_set = light.value_set = FALSE;
     }
   }
 
   task void send() {
       if (!busy) {
-        BlinkToRadioMsg* btrpkt = (BlinkToRadioMsg*)(call Packet.getPayload(&pkt, sizeof (BlinkToRadioMsg)));
+        BlinkToRadioMsg* btrpkt = (BlinkToRadioMsg*)(call TimeSyncAMSend.getPayload(&pkt, sizeof (BlinkToRadioMsg)));
         btrpkt->nodeid = TOS_NODE_ID;
         btrpkt->temp = latest_temp(&temp);
         btrpkt->light = light.value;
-        if (call AMSend.send(AM_BROADCAST_ADDR, &pkt, sizeof(BlinkToRadioMsg)) == SUCCESS) {
+
+        if (call TimeSyncAMSend.send(AM_BROADCAST_ADDR, &pkt, sizeof(BlinkToRadioMsg), call LocalTime.get()) == SUCCESS) {
           busy = TRUE;
         }
       } else {
@@ -184,13 +187,28 @@ implementation
   }
 
   event message_t* Receive.receive(message_t* msg, void* payload, uint8_t len) {
-    if (len == sizeof(BlinkToRadioMsg)) {
-      BlinkToRadioMsg* btrpkt = (BlinkToRadioMsg*)payload;
-      if (btrpkt->temp > 100)
-      {
-        post flash_green();
-      } else {
-        light.neighbour_light = TRUE;
+    if (call TimeSyncPacket.isValid(msg))
+    {
+      // The time when the other gut did the temperature reading
+      uint32_t otherRead = call TimeSyncPacket.eventTime(msg);
+      uint32_t previousRead = call SensorTimer.gett0();
+
+      // Fireflies protocol
+      uint32_t shift = 0;
+      uint32_t dist = (otherRead - previousRead) % call SensorTimer.getdt();
+      if (otherRead < previousRead && dist > (call SensorTimer.getdt()) / 2) {
+        shift = (call SensorTimer.getdt() - dist) / 4;
+      }
+      call SensorTimer.startPeriodicAt(previousRead - shift, call SensorTimer.getdt());
+
+      if (len == sizeof(BlinkToRadioMsg)) {
+        BlinkToRadioMsg* btrpkt = (BlinkToRadioMsg*)payload;
+        if (btrpkt->temp > 100)
+        {
+          post flash_green();
+        } else {
+          light.neighbour_light = TRUE; 
+        }
       }
     }
     return msg;
