@@ -4,6 +4,7 @@
 #include "Timer.h"
 #include "Blink.h"
 #include "BlinkToRadioMsg.h"
+#include "limits.h"
 
 module BlinkC
 {
@@ -132,6 +133,30 @@ implementation
     }
 
     avg_temp = (float) sum / readings;
+  }
+
+  task void recent_temp_increase() 
+  {
+    int16_t max = -32678;
+    int i, check_index, readings;
+
+    readings = ( temp.num_temp_readings < TEMP_MAX ) ? temp.index : TEMP_MAX;
+
+    for( i = 0; i < readings; i++ ) {
+
+      check_index = (temp.index - i) % readings;
+      if( check_index < 0 ) {
+        check_index += readings;
+      }
+
+      if( temp.values[check_index] > max ) {
+        max = temp.values[check_index];
+      }
+      else if( (max - temp.values[check_index]) >= 5 ) {
+        //TODO post alarm call
+        break;
+      }
+    }
   } 
 
   /******** Sensor Recieve code *******************/

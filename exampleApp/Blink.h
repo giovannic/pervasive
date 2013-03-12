@@ -17,7 +17,7 @@ typedef struct light_state{
 } light_state;
 
 typedef struct temp_state{
-  uint16_t values[TEMP_MAX];
+  int16_t values[TEMP_MAX];
   uint8_t index;
   bool value_set;
   uint8_t num_temp_readings;
