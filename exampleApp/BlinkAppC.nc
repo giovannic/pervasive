@@ -13,6 +13,7 @@ implementation
   components new TimerMilliC() as ReceiveLedTimer;
   components new TimerMilliC() as SendLedTimer;
   components new TempC() as Temp_Sensor;
+  components new PhotoC() as Light_Sensor;
  
   components ActiveMessageC;
   components new AMSenderC(AM_TYPE);
@@ -25,6 +26,7 @@ implementation
   BlinkC.SendLedTimer -> SendLedTimer;
   BlinkC.Leds -> LedsC;
   BlinkC.Temp_Sensor -> Temp_Sensor;
+  BlinkC.Light_Sensor -> Light_Sensor;
 
   BlinkC.Packet -> AMSenderC;
   BlinkC.AMPacket -> AMSenderC;
