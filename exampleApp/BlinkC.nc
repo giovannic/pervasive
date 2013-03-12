@@ -156,7 +156,7 @@ implementation
 
 			// Fireflies protocol
 			uint32_t shift = 0;
-      uint32_5 dist = (otherRead - previousRead) % call SensorTimer.getdt()
+      uint32_t dist = (otherRead - previousRead) % call SensorTimer.getdt();
 			if (otherRead < previousRead && dist > (call SensorTimer.getdt()) / 2) {
 				  shift = (call SensorTimer.getdt() - dist) / 4;
 			}
