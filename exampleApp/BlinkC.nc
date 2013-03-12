@@ -119,6 +119,21 @@ implementation
     call Light_Sensor.read();
   }
 
+  task void avg_temperature()
+  {
+    uint16_t sum = 0;
+    int i, readings;
+    float avg_temp;
+
+    readings = ( temp.num_temp_readings < TEMP_MAX ) ? temp.index : TEMP_MAX;
+
+    for( i = 0; i < readings; i++ ) {
+      sum += temp.values[i];
+    }
+
+    avg_temp = (float) sum / readings;
+  } 
+
   /******** Sensor Recieve code *******************/
 
   task void flash_green()
