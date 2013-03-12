@@ -8,20 +8,22 @@
 
 module BlinkC
 {
-  uses interface Timer<TMilli> as SensorTimer;
-  uses interface Timer<TMilli> as SendLedTimer;
-  uses interface Timer<TMilli> as ReceiveLedTimer;
-  uses interface Leds;
-  uses interface Boot;
-  uses interface Read<uint16_t> as Temp_Sensor;
-  uses interface Read<uint16_t> as Light_Sensor;
+	uses {
+		interface Timer<TMilli> as SensorTimer;
+		interface Timer<TMilli> as SendLedTimer;
+		interface Timer<TMilli> as ReceiveLedTimer;
+		interface Leds;
+		interface Boot;
+		interface Read<uint16_t> as Temp_Sensor;
+		interface Read<uint16_t> as Light_Sensor;
 
-  uses interface Packet;
-  uses interface AMPacket;
-  uses interface AMSend;
-  uses interface SplitControl as AMControl;
-
-  uses interface Receive; 
+		interface SplitControl as AMControl;
+		interface Receive; 
+		interface TimeSyncAMSend<TMilli,uint32_t>;
+		interface TimeSyncPacket<TMilli,uint32_t>;
+  	
+		interface LocalTime<TMilli>;
+	}
 }
 implementation
 {
@@ -29,6 +31,7 @@ implementation
   message_t pkt;
   temp_state temp;
   light_state light;
+  bool fire = FALSE;
 
   event void Boot.booted()
   {
@@ -54,44 +57,80 @@ implementation
 
   /******** Sensor Sending code *******************/
 
-  task void check_avg_temperature()
-  {
-    //TODO
-  } 
-
-  task void check_fire()
-  {
-    //check for fire
-    if (!light.neighbour_light)
-    {
-      //chain of checks
-      post check_avg_temperature();
-    }
-    light.neighbour_light = FALSE;
-  }
-
-  event void AMSend.sendDone(message_t *msg, error_t err)
-  {
-    if (&pkt == msg) {
-      busy = FALSE;
-      call Packet.clear(&pkt);
-      temp.value_set = light.value_set = FALSE;
-    }
-  }
-
   task void send() {
       if (!busy) {
-        BlinkToRadioMsg* btrpkt = (BlinkToRadioMsg*)(call Packet.getPayload(&pkt, sizeof (BlinkToRadioMsg)));
+        BlinkToRadioMsg* btrpkt = (BlinkToRadioMsg*)(call TimeSyncAMSend.getPayload(&pkt, sizeof (BlinkToRadioMsg)));
         btrpkt->nodeid = TOS_NODE_ID;
         btrpkt->temp = latest_temp(&temp);
         btrpkt->light = light.value;
-        if (call AMSend.send(AM_BROADCAST_ADDR, &pkt, sizeof(BlinkToRadioMsg)) == SUCCESS) {
+        btrpkt->fire = fire;
+
+        if (call TimeSyncAMSend.send(AM_BROADCAST_ADDR, &pkt, sizeof(BlinkToRadioMsg), call LocalTime.get()) == SUCCESS) {
           busy = TRUE;
         }
       } else {
         post send();
       }
   }
+
+  task void recent_temp_increase() 
+  {
+    int16_t max_val = -32678;
+    int16_t max_avg = -32678;
+    int i, check_index, readings;
+
+    readings = ( !temp.full ) ? temp.index : TEMP_MAX;
+
+    for( i = 0; i < readings; i++ ) {
+
+      check_index = (temp.index - i) % readings;
+
+      if( check_index < 0 ) {
+        check_index += readings;
+      }
+
+      if( temp.values[check_index] > max_val ) {
+        max_val = temp.values[check_index];
+      }
+      else if( temp.avgs[check_index] > max_avg ) {
+        max_avg = temp.avgs[check_index];
+      }
+      else if( max_avg - temp.avgs[check_index] >= 20 ) {
+        fire = TRUE;
+        post send();
+        break;
+      }
+      else if( (max_val - temp.values[check_index]) >= 5 ) {
+        fire = TRUE;
+        post send();
+        break;
+      }
+
+    }
+
+  } 
+
+
+  task void check_fire()
+  {
+    //check for fire
+    if (!light.neighbour_light)
+    {
+      post recent_temp_increase(); 
+    }
+    light.neighbour_light = FALSE;
+  }
+
+  event void TimeSyncAMSend.sendDone(message_t *msg, error_t err)
+  {
+    if (&pkt == msg) {
+      busy = FALSE;
+      //call TimeSyncPacket.clear(&pkt);
+      temp.value_set = light.value_set = FALSE;
+    }
+  }
+
+
 
   task void check_send()
   {
@@ -130,42 +169,6 @@ implementation
     call Temp_Sensor.read();
     call Light_Sensor.read();
   }
-
-  task void recent_temp_increase() 
-  {
-    int16_t max_val = -32678;
-    int16_t max_avg = -32678;
-    int i, check_index, readings;
-
-    readings = ( !temp.full ) ? temp.index : TEMP_MAX;
-
-    for( i = 0; i < readings; i++ ) {
-
-      check_index = (temp.index - i) % readings;
-
-      if( check_index < 0 ) {
-        check_index += readings;
-      }
-
-      if( temp.values[check_index] > max_val ) {
-        max_val = temp.values[check_index];
-      }
-      else if( temp.avgs[check_index] > max_avg ) {
-        max_avg = temp.avgs[check_index];
-      }
-      else if( max_avg - temp.avgs[check_index] >= 20 ) {
-        //TODO post alarm call
-        break;
-      }
-      else if( (max_val - temp.values[check_index]) >= 5 ) {
-        //TODO post alarm call
-        break;
-      }
-
-    }
-
-  } 
-
   /******** Sensor Recieve code *******************/
 
   task void flash_green()
@@ -180,13 +183,28 @@ implementation
   }
 
   event message_t* Receive.receive(message_t* msg, void* payload, uint8_t len) {
-    if (len == sizeof(BlinkToRadioMsg)) {
-      BlinkToRadioMsg* btrpkt = (BlinkToRadioMsg*)payload;
-      if (btrpkt->temp > 100)
-      {
-        post flash_green();
-      } else {
-        light.neighbour_light = TRUE;
+    BlinkToRadioMsg* btrpkt = (BlinkToRadioMsg*)payload;
+    if (btrpkt->nodeid >= 33 && btrpkt->nodeid <=36 && (call TimeSyncPacket.isValid(msg)))
+    {
+      // The time when the other gut did the temperature reading
+      uint32_t otherRead = call TimeSyncPacket.eventTime(msg);
+      uint32_t previousRead = call SensorTimer.gett0();
+
+      // Fireflies protocol
+      uint32_t shift = 0;
+      uint32_t dist = (otherRead - previousRead) % call SensorTimer.getdt();
+      if (otherRead < previousRead && dist > (call SensorTimer.getdt()) / 2) {
+        shift = (call SensorTimer.getdt() - dist) / 4;
+      }
+      call SensorTimer.startPeriodicAt(previousRead - shift, call SensorTimer.getdt());
+
+      if (len == sizeof(BlinkToRadioMsg)) {
+        if (btrpkt->temp > 100)
+        {
+          post flash_green();
+        } else {
+          light.neighbour_light = TRUE; 
+        }
       }
     }
     return msg;
