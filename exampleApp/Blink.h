@@ -17,10 +17,11 @@ typedef struct light_state{
 } light_state;
 
 typedef struct temp_state{
-  uint16_t values[TEMP_MAX];
+  int16_t values[TEMP_MAX];
+  float avgs[TEMP_MAX];
   uint8_t index;
   bool value_set;
-  uint8_t num_temp_readings;
+  bool full;
 } temp_state;
 
 void init_light(light_state* l){
@@ -29,10 +30,12 @@ void init_light(light_state* l){
 }
 
 void init_temp(temp_state* t){
+  memset(t->values,0,TEMP_MAX * sizeof(*t->values));
+  memset(t->avgs,0,TEMP_MAX * sizeof(*t->avgs));
   //hack to start at 0
   t->index = TEMP_MAX - 1;
   t->value_set = FALSE;
-  t->num_temp_readings = 0;
+  t->full = FALSE;
 }
 
 uint16_t latest_temp(temp_state* t){
@@ -40,9 +43,20 @@ uint16_t latest_temp(temp_state* t){
 }
 
 void temp_push(temp_state* t, uint16_t data){
-  t->index = (t->index + 1) % TEMP_MAX;
-  t->values[t->index] = data; 
-  //TODO: could overflow
-  (t->num_temp_readings)++;
+  //add data
+  float last_avg = t->avgs[t->index]; 
+  //t->index = (t->index + 1) % TEMP_MAX;
+  int16_t overwritten = t->values[t->index];
+  //t->values[t->index] = data;
+
+  //update average
+  uint8_t total = t->full ? t->index : TEMP_MAX;
+  t->avgs[t->index] = last_avg - (float)overwritten/total + (float)data/total;
+ 
+  //update full
+  if (t->index == TEMP_MAX - 1)
+  {
+    t->full = TRUE;
+  }
 }
 #endif

@@ -2,6 +2,7 @@
 //## programing module of the pervasive systems course.
 
 #include "Timer.h"
+#include "Utils.h"
 #include "Blink.h"
 #include "BlinkToRadioMsg.h"
 
@@ -53,9 +54,26 @@ implementation
 
   /******** Sensor Sending code *******************/
 
+  task void check_avg_temperature()
+  {
+    int readings;
+    float avg_temp;
+
+    readings = temp.full ? temp.index : TEMP_MAX;
+
+    avg_temp = avg(temp.values, readings);
+
+  } 
+
   task void check_fire()
   {
     //check for fire
+    if (!light.neighbour_light)
+    {
+      //chain of checks
+      post check_avg_temperature();
+    }
+    light.neighbour_light = FALSE;
   }
 
   event void AMSend.sendDone(message_t *msg, error_t err)
@@ -103,12 +121,12 @@ implementation
   
   event void SendLedTimer.fired()
   {
-    call Leds.led1Off();
+    call Leds.led0Off();
   }
   
   task void flash_yellow()
   {
-    call Leds.led1On();
+    call Leds.led0On();
     call SendLedTimer.startOneShot(LED_FLASH_PERIOD);
   }
   
@@ -118,33 +136,17 @@ implementation
     call Temp_Sensor.read();
     call Light_Sensor.read();
   }
-
-  task void avg_temperature()
-  {
-    uint16_t sum = 0;
-    int i, readings;
-    float avg_temp;
-
-    readings = ( temp.num_temp_readings < TEMP_MAX ) ? temp.index : TEMP_MAX;
-
-    for( i = 0; i < readings; i++ ) {
-      sum += temp.values[i];
-    }
-
-    avg_temp = (float) sum / readings;
-  } 
-
   /******** Sensor Recieve code *******************/
 
   task void flash_green()
   {
-    call Leds.led2On();
+    call Leds.led1On();
     call ReceiveLedTimer.startOneShot(LED_FLASH_PERIOD);
   }
 
   event void ReceiveLedTimer.fired()
   {
-    call Leds.led2Off();
+    call Leds.led1Off();
   }
 
   event message_t* Receive.receive(message_t* msg, void* payload, uint8_t len) {
