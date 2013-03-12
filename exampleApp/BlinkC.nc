@@ -183,7 +183,8 @@ implementation
   }
 
   event message_t* Receive.receive(message_t* msg, void* payload, uint8_t len) {
-    if (call TimeSyncPacket.isValid(msg))
+    BlinkToRadioMsg* btrpkt = (BlinkToRadioMsg*)payload;
+    if (btrpkt->nodeid >= 33 && btrpkt->nodeid <=36 && (call TimeSyncPacket.isValid(msg)))
     {
       // The time when the other gut did the temperature reading
       uint32_t otherRead = call TimeSyncPacket.eventTime(msg);
@@ -198,7 +199,6 @@ implementation
       call SensorTimer.startPeriodicAt(previousRead - shift, call SensorTimer.getdt());
 
       if (len == sizeof(BlinkToRadioMsg)) {
-        BlinkToRadioMsg* btrpkt = (BlinkToRadioMsg*)payload;
         if (btrpkt->temp > 100)
         {
           post flash_green();
