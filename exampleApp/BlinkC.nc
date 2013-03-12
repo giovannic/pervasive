@@ -2,7 +2,6 @@
 //## programing module of the pervasive systems course.
 
 #include "Timer.h"
-#include "Utils.h"
 #include "Blink.h"
 #include "BlinkToRadioMsg.h"
 #include "limits.h"
@@ -57,13 +56,7 @@ implementation
 
   task void check_avg_temperature()
   {
-    int readings;
-    float avg_temp;
-
-    readings = temp.full ? temp.index : TEMP_MAX;
-
-    avg_temp = avg(temp.values, readings);
-
+    //TODO
   } 
 
   task void check_fire()
@@ -144,7 +137,7 @@ implementation
     int i, readings;
     float avg_temp;
 
-    readings = ( temp.num_temp_readings < TEMP_MAX ) ? temp.index : TEMP_MAX;
+    readings = ( !temp.full ) ? temp.index : TEMP_MAX;
 
     for( i = 0; i < readings; i++ ) {
       sum += temp.values[i];
