@@ -26,16 +26,13 @@ implementation
 {
   bool busy = FALSE;
   message_t pkt;
+  temp_state temp;
+  light_state light;
 
-  uint16_t temp_values[TEMP_MAX];
-  uint8_t temp_index = 0;
-  bool temp_set = FALSE;
-
-  uint16_t light_value;
-  bool light_set = FALSE;
-  
   event void Boot.booted()
   {
+    init_temp(&temp);
+    init_light(&light);
     call AMControl.start();
   }
 
@@ -56,43 +53,51 @@ implementation
 
   /******** Sensor Sending code *******************/
 
+  task void check_fire()
+  {
+    //check for fire
+  }
+
   event void AMSend.sendDone(message_t *msg, error_t err)
   {
     if (&pkt == msg) {
       busy = FALSE;
       call Packet.clear(&pkt);
-      temp_set = light_set = FALSE;
+      temp.value_set = light.value_set = FALSE;
     }
   }
 
-  task void check_send()
-  {
-    if (temp_set && light_set) {
+  task void send() {
       if (!busy) {
         BlinkToRadioMsg* btrpkt = (BlinkToRadioMsg*)(call Packet.getPayload(&pkt, sizeof (BlinkToRadioMsg)));
         btrpkt->nodeid = TOS_NODE_ID;
-        btrpkt->temp = temp_values[temp_index];
-        btrpkt->light = light_value;
+        btrpkt->temp = latest_temp(&temp);
+        btrpkt->light = light.value;
         if (call AMSend.send(AM_BROADCAST_ADDR, &pkt, sizeof(BlinkToRadioMsg)) == SUCCESS) {
           busy = TRUE;
         }
       } else {
-        post check_send();
+        post send();
       }
-    }
+  }
 
+  task void check_send()
+  {
+    if (temp.value_set && light.value_set) {
+      post send();
+      post check_fire();
+    }
   }
   
   event void Temp_Sensor.readDone(error_t result, uint16_t data) {
-    temp_index = (temp_index + 1) % TEMP_MAX;
-    temp_values[temp_index] = data; 
-    temp_set = TRUE;
+    temp_push(&temp, data);
+    temp.value_set = TRUE;
     post check_send();
   }
 
   event void Light_Sensor.readDone(error_t result, uint16_t data) {
-    light_value = data;
-    light_set = TRUE;
+    light.value = data;
+    light.value_set = TRUE;
     post check_send();
   }
   
@@ -131,7 +136,11 @@ implementation
     if (len == sizeof(BlinkToRadioMsg)) {
       BlinkToRadioMsg* btrpkt = (BlinkToRadioMsg*)payload;
       if (btrpkt->temp > 100)
+      {
         post flash_green();
+      } else {
+        light.neighbour_light = TRUE;
+      }
     }
     return msg;
   }
