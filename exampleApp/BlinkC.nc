@@ -31,6 +31,7 @@ implementation
   message_t pkt;
   temp_state temp;
   light_state light;
+  bool fire = FALSE;
 
   event void Boot.booted()
   {
@@ -56,18 +57,66 @@ implementation
 
   /******** Sensor Sending code *******************/
 
-  task void check_avg_temperature()
+  task void send() {
+      if (!busy) {
+        BlinkToRadioMsg* btrpkt = (BlinkToRadioMsg*)(call TimeSyncAMSend.getPayload(&pkt, sizeof (BlinkToRadioMsg)));
+        btrpkt->nodeid = TOS_NODE_ID;
+        btrpkt->temp = latest_temp(&temp);
+        btrpkt->light = light.value;
+        btrpkt->fire = fire;
+
+        if (call TimeSyncAMSend.send(AM_BROADCAST_ADDR, &pkt, sizeof(BlinkToRadioMsg), call LocalTime.get()) == SUCCESS) {
+          busy = TRUE;
+        }
+      } else {
+        post send();
+      }
+  }
+
+  task void recent_temp_increase() 
   {
-    //TODO
+    int16_t max_val = -32678;
+    int16_t max_avg = -32678;
+    int i, check_index, readings;
+
+    readings = ( !temp.full ) ? temp.index : TEMP_MAX;
+
+    for( i = 0; i < readings; i++ ) {
+
+      check_index = (temp.index - i) % readings;
+
+      if( check_index < 0 ) {
+        check_index += readings;
+      }
+
+      if( temp.values[check_index] > max_val ) {
+        max_val = temp.values[check_index];
+      }
+      else if( temp.avgs[check_index] > max_avg ) {
+        max_avg = temp.avgs[check_index];
+      }
+      else if( max_avg - temp.avgs[check_index] >= 20 ) {
+        fire = TRUE;
+        post send();
+        break;
+      }
+      else if( (max_val - temp.values[check_index]) >= 5 ) {
+        fire = TRUE;
+        post send();
+        break;
+      }
+
+    }
+
   } 
+
 
   task void check_fire()
   {
     //check for fire
     if (!light.neighbour_light)
     {
-      //chain of checks
-      post check_avg_temperature();
+      post recent_temp_increase(); 
     }
     light.neighbour_light = FALSE;
   }
@@ -81,20 +130,7 @@ implementation
     }
   }
 
-  task void send() {
-      if (!busy) {
-        BlinkToRadioMsg* btrpkt = (BlinkToRadioMsg*)(call TimeSyncAMSend.getPayload(&pkt, sizeof (BlinkToRadioMsg)));
-        btrpkt->nodeid = TOS_NODE_ID;
-        btrpkt->temp = latest_temp(&temp);
-        btrpkt->light = light.value;
 
-        if (call TimeSyncAMSend.send(AM_BROADCAST_ADDR, &pkt, sizeof(BlinkToRadioMsg), call LocalTime.get()) == SUCCESS) {
-          busy = TRUE;
-        }
-      } else {
-        post send();
-      }
-  }
 
   task void check_send()
   {
@@ -133,42 +169,6 @@ implementation
     call Temp_Sensor.read();
     call Light_Sensor.read();
   }
-
-  task void recent_temp_increase() 
-  {
-    int16_t max_val = -32678;
-    int16_t max_avg = -32678;
-    int i, check_index, readings;
-
-    readings = ( !temp.full ) ? temp.index : TEMP_MAX;
-
-    for( i = 0; i < readings; i++ ) {
-
-      check_index = (temp.index - i) % readings;
-
-      if( check_index < 0 ) {
-        check_index += readings;
-      }
-
-      if( temp.values[check_index] > max_val ) {
-        max_val = temp.values[check_index];
-      }
-      else if( temp.avgs[check_index] > max_avg ) {
-        max_avg = temp.avgs[check_index];
-      }
-      else if( max_avg - temp.avgs[check_index] >= 20 ) {
-        //TODO post alarm call
-        break;
-      }
-      else if( (max_val - temp.values[check_index]) >= 5 ) {
-        //TODO post alarm call
-        break;
-      }
-
-    }
-
-  } 
-
   /******** Sensor Recieve code *******************/
 
   task void flash_green()
