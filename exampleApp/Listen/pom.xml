@@ -26,5 +26,22 @@
   </dependencies>
   <build>
     <finalName>Listen</finalName>
+    <plugins>
+      <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <configuration><manifest><addClasspath>true</addClasspath>
+        <classpathPrefix>../../../../support/sdk/java/</classpathPrefix>
+        </manifest></configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.3.1</version>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
 </project>
