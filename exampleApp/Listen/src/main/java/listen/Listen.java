@@ -70,9 +70,9 @@ public class Listen {
 	    if(packet[4] >= 33 && packet[4] <= 36) {
 		    Dump.printPacket(System.out, packet);
 		    int node = packet[4];
-		    int temp = (((packet[10]<<8)&0xFFFF) + (packet[11]&0xFFFF));
-		    int light = (((packet[12]<<8)&0xFFFF) + (packet[13]&0xFFFF));
-                    boolean fire = packet[14]==1;
+		    int temp = (((packet[10]<<8)&0xFFFF) + (packet[11]&0xFF));
+		    int light = (((packet[12]<<8)&0xFFFF) + (packet[13]&0xFF));
+            boolean fire = packet[14]==1;
 		    //System.out.println();
 		    //System.out.flush();
 		    System.out.println("\nnode: " + node);

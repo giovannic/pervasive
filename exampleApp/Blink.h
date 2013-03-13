@@ -11,13 +11,13 @@ enum {
 };
 
 typedef struct light_state{
-  int16_t value;
+  uint16_t value;
   bool value_set;
   bool neighbour_light;
 } light_state;
 
 typedef struct temp_state{
-  int16_t values[TEMP_MAX];
+  uint16_t values[TEMP_MAX];
   uint8_t index;
   bool value_set;
   bool full;

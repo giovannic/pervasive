@@ -75,7 +75,7 @@ implementation
 
   task void recent_temp_increase() 
   {
-    int16_t max_val = -32678;
+    uint16_t max_val = 0;
     int i, check_index, readings;
 
     readings = ( !temp.full ) ? temp.index : TEMP_MAX;
