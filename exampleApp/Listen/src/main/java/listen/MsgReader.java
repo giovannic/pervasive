@@ -39,7 +39,7 @@
  */
 
 
-package net.tinyos.tools;
+package listen;
 
 import java.util.*;
 
@@ -66,8 +66,9 @@ public class MsgReader implements net.tinyos.message.MessageListener {
   public void messageReceived(int to, Message message) {
     long t = System.currentTimeMillis();
     //    Date d = new Date(t);
-    System.out.print("" + t + ": ");
-    System.out.println(message);
+    //System.out.print("" + t + ": ");
+    //System.out.println(message);
+    System.out.println("received " );
   }
 
   

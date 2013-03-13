@@ -30,7 +30,7 @@
  */
 
 
-package net.tinyos.tools;
+package listen;
 
 import java.io.*;
 import net.tinyos.packet.*;
@@ -64,9 +64,17 @@ public class Listen {
 	  reader.open(PrintStreamMessenger.err);
 	  for (;;) {
 	    byte[] packet = reader.readPacket();
-	    Dump.printPacket(System.out, packet);
-	    System.out.println();
-	    System.out.flush();
+	    if(packet[4] >= 35 && packet[4] <= 35) {
+		    Dump.printPacket(System.out, packet);
+		    //System.out.println();
+		    //System.out.flush();
+		    BlinkToRadioMsg msg = new BlinkToRadioMsg(packet);
+		    System.out.println("\nnode: " + packet[4]);
+		    System.out.println("temp: " + (((packet[10] << 8) + packet[11])&0xFFFF);
+		    System.out.println("light: " + (((packet[12] << 8) + packet[13])&0xFFFF);
+		    System.out.println("fire: " + (packet[14]==1));
+		    System.out.println("-------------------------------");
+	    }
 	  }
 	}
 	catch (IOException e) {
