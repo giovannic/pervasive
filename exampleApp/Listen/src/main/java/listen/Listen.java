@@ -62,17 +62,23 @@ public class Listen {
 
 	try {
 	  reader.open(PrintStreamMessenger.err);
+	  Database db = new Database();
 	  for (;;) {
 	    byte[] packet = reader.readPacket();
 	    if(packet[4] >= 33 && packet[4] <= 36) {
 		    Dump.printPacket(System.out, packet);
+		    int node = packet[4];
+		    int temp = (((packet[10]<<8) + packet[11])&0xFFFF);
+		    int light = (((packet[12]<<8) + packet[13])&0xFFFF);
+                    boolean fire = packet[14]==1;
 		    //System.out.println();
 		    //System.out.flush();
-		    System.out.println("\nnode: " + packet[4]);
-		    System.out.println("temp: " + (((packet[10] << 8) + packet[11])&0xFFFF));
-		    System.out.println("light: " + (((packet[12] << 8) + packet[13])&0xFFFF));
-		    System.out.println("fire: " + (packet[14]==1));
+		    System.out.println("\nnode: " + node);
+		    System.out.println("temp: " + temp);
+		    System.out.println("light: " + light);
+		    System.out.println("fire: " + fire );
 		    System.out.println("-------------------------------");
+		    db.put(node, heat, light);
 	    }
 	  }
 	}
