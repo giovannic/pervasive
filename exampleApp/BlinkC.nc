@@ -197,7 +197,7 @@ implementation
         }
         call SensorTimer.startPeriodicAt(previousRead - shift, call SensorTimer.getdt());
 
-        if (btrpkt->temp > 100) {
+        if (btrpkt->light > 100) {
           post flash_green();
         } else {
           light.neighbour_light = TRUE; 
