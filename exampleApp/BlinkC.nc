@@ -61,9 +61,9 @@ implementation
       if (!busy) {
         BlinkToRadioMsg* btrpkt = (BlinkToRadioMsg*)(call TimeSyncAMSend.getPayload(&pkt, sizeof (BlinkToRadioMsg)));
         btrpkt->nodeid = TOS_NODE_ID;
-        btrpkt->temp = 100;
-        btrpkt->light = 50;
-        btrpkt->fire = TRUE;
+        btrpkt->temp = latest_temp(&temp);
+        btrpkt->light = light.value;
+        btrpkt->fire = fire;
 
         if (call TimeSyncAMSend.send(AM_BROADCAST_ADDR, &pkt, sizeof(BlinkToRadioMsg), call LocalTime.get()) == SUCCESS) {
           busy = TRUE;
