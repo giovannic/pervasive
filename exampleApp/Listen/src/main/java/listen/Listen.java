@@ -33,6 +33,8 @@
 package listen;
 
 import java.io.*;
+import java.sql.SQLException;
+
 import net.tinyos.packet.*;
 import net.tinyos.util.*;
 import net.tinyos.message.*;
@@ -78,7 +80,12 @@ public class Listen {
 		    System.out.println("light: " + light);
 		    System.out.println("fire: " + fire );
 		    System.out.println("-------------------------------");
-		    db.put(node, heat, light);
+		    try {
+				db.put(node, temp, light, fire);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	    }
 	  }
 	}

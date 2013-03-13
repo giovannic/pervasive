@@ -24,12 +24,13 @@ public class Database {
 		}
 	}
 
-	public void put(int node, int heat, int light) throws SQLException {
-		String query = "INSERT INTO data (node_id, heat, light) VALUES( ?, ?, ? )";
+	public void put(int node, int heat, int light, boolean fire) throws SQLException {
+		String query = "INSERT INTO data (node_id, heat, light, fire) VALUES( ?, ?, ?, ? )";
 		PreparedStatement stmt = connection.prepareStatement(query);
 		stmt.setInt(1,node);
 		stmt.setInt(2,heat);
 		stmt.setInt(3,light);
+		stmt.setBoolean(4, fire);
 		stmt.executeUpdate();
 	}
 
