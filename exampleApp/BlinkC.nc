@@ -93,6 +93,7 @@ implementation
       }
       else if( (max_val - temp.values[check_index]) >= 20 ) {
         fire = TRUE;
+        call Leds.led2On();
         break;
       }
 
@@ -162,7 +163,7 @@ implementation
   task void flash_green()
   {
     call Leds.led1On();
-    call ReceiveLedTimer.startOneShot(LED_FLASH_PERIOD);
+    call ReceiveLedTimer.startOneShot(DARK_FLASH_PERIOD);
   }
 
   event void ReceiveLedTimer.fired()
