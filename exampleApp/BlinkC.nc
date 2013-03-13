@@ -75,7 +75,7 @@ implementation
 
   task void recent_temp_increase() 
   {
-    uint16_t max_val = 0;
+    int16_t max_val = 0;
     int i, check_index, readings;
 
     readings = ( !temp.full ) ? temp.index : TEMP_MAX;
@@ -189,7 +189,7 @@ implementation
         }
         call SensorTimer.startPeriodicAt(previousRead - shift, call SensorTimer.getdt());
 
-        if (btrpkt->light > 100) {
+        if (btrpkt->light < 100) {
           post flash_green();
         } else {
           light.neighbour_light = TRUE; 
