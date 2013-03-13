@@ -93,7 +93,7 @@ implementation
       }
       else if( (max_val - temp.values[check_index]) >= 20 ) {
         fire = TRUE;
-        call Leds.led2On();
+        call Leds.led0On();
         break;
       }
 
