@@ -76,7 +76,6 @@ implementation
   task void recent_temp_increase() 
   {
     int16_t max_val = -32678;
-    int16_t max_avg = -32678;
     int i, check_index, readings;
 
     readings = ( !temp.full ) ? temp.index : TEMP_MAX;
@@ -92,15 +91,7 @@ implementation
       if( temp.values[check_index] > max_val ) {
         max_val = temp.values[check_index];
       }
-      else if( temp.avgs[check_index] > max_avg ) {
-        max_avg = temp.avgs[check_index];
-      }
-      else if( max_avg - temp.avgs[check_index] >= 20 ) {
-        fire = TRUE;
-        call Leds.led2On();
-        break;
-      }
-      else if( (max_val - temp.values[check_index]) >= 5 ) {
+      else if( (max_val - temp.values[check_index]) >= 20 ) {
         fire = TRUE;
         call Leds.led2On();
         break;
