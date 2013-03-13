@@ -97,17 +97,14 @@ implementation
       }
       else if( max_avg - temp.avgs[check_index] >= 20 ) {
         fire = TRUE;
-        post send();
         break;
       }
       else if( (max_val - temp.values[check_index]) >= 5 ) {
         fire = TRUE;
-        post send();
         break;
       }
 
     }
-
   } 
 
 
@@ -125,7 +122,6 @@ implementation
   {
     if (&pkt == msg) {
       busy = FALSE;
-      //call TimeSyncPacket.clear(&pkt);
       temp.value_set = light.value_set = FALSE;
     }
   }
@@ -154,12 +150,12 @@ implementation
   
   event void SendLedTimer.fired()
   {
-    call Leds.led0Off();
+    call Leds.led2Off();
   }
   
   task void flash_yellow()
   {
-    call Leds.led0On();
+    call Leds.led2On();
     call SendLedTimer.startOneShot(LED_FLASH_PERIOD);
   }
   
@@ -183,24 +179,25 @@ implementation
   }
 
   event message_t* Receive.receive(message_t* msg, void* payload, uint8_t len) {
-    BlinkToRadioMsg* btrpkt = (BlinkToRadioMsg*)payload;
-    if (btrpkt->nodeid >= 33 && btrpkt->nodeid <=36 && (call TimeSyncPacket.isValid(msg)))
+    if (len == sizeof(BlinkToRadioMsg))
     {
-      // The time when the other gut did the temperature reading
-      uint32_t otherRead = call TimeSyncPacket.eventTime(msg);
-      uint32_t previousRead = call SensorTimer.gett0();
-
-      // Fireflies protocol
-      uint32_t shift = 0;
-      uint32_t dist = (otherRead - previousRead) % call SensorTimer.getdt();
-      if (otherRead < previousRead && dist > (call SensorTimer.getdt()) / 2) {
-        shift = (call SensorTimer.getdt() - dist) / 4;
-      }
-      call SensorTimer.startPeriodicAt(previousRead - shift, call SensorTimer.getdt());
-
-      if (len == sizeof(BlinkToRadioMsg)) {
-        if (btrpkt->temp > 100)
+      BlinkToRadioMsg* btrpkt = (BlinkToRadioMsg*) payload;
+      if (btrpkt->nodeid >= 33 && btrpkt->nodeid <= 36 && (call TimeSyncPacket.isValid(msg)))
+      {
+        // The time when the other gut did the temperature reading
+        uint32_t otherRead = call TimeSyncPacket.eventTime(msg);
+        uint32_t previousRead = call SensorTimer.gett0();
+  
+        // Fireflies protocol
+        uint32_t shift = 0;
+        uint32_t dist = (otherRead - previousRead) % call SensorTimer.getdt();
+        if (otherRead > previousRead && dist > (call SensorTimer.getdt()) / 2)
         {
+          shift = (call SensorTimer.getdt() - dist) / 4;
+        }
+        call SensorTimer.startPeriodicAt(previousRead - shift, call SensorTimer.getdt());
+
+        if (btrpkt->temp > 100) {
           post flash_green();
         } else {
           light.neighbour_light = TRUE; 
