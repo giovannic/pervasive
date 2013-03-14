@@ -150,8 +150,14 @@ implementation
     return receive(msg, payload, len);
   }
 
-  task void fire_send() {
-    BlinkToRadioMsg* btrpkt; 
+  uint8_t tmpLen;
+
+  void uartSendFire(message_t* msg) {
+    uint8_t len;
+    am_id_t id;
+    am_addr_t addr, src;
+    BlinkToRadioMsg *btrpkt;
+
     atomic
       if (uartIn == uartOut && !uartFull)
 	{
@@ -159,15 +165,25 @@ implementation
 	  return;
 	}
 
-    BlinkToRadioMsg* btrpkt = (BlinkToRadioMsg*)(call UartAMSend.getPayload(&pkt, sizeof (BlinkToRadioMsg)));
+    btrpkt = (BlinkToRadioMsg*)(call RadioPacket.getPayload(msg, sizeof (BlinkToRadioMsg)));
     btrpkt->nodeid = TOS_NODE_ID;
     btrpkt->temp = 0;
     btrpkt->light = 0;
     btrpkt->fire = TRUE;
+    tmpLen = len = call RadioPacket.payloadLength(msg);
+    id = call RadioAMPacket.type(msg);
+    addr = call RadioAMPacket.destination(msg);
+    src = call RadioAMPacket.source(msg);
+    call UartPacket.clear(msg);
+    call UartAMPacket.setSource(msg, src);
 
-    if (!call TimeSyncAMSend.send(AM_BROADCAST_ADDR, &pkt, sizeof(BlinkToRadioMsg), call LocalTime.get()) == SUCCESS) {
-      post fire_send();
-    }
+    if (call UartSend.send[id](addr, msg, len) == SUCCESS)
+      call Leds.led1Toggle();
+    else
+      {
+	failBlink();
+	uartSendFire(msg);
+      }
   }
 
   message_t* receive(message_t *msg, void *payload, uint8_t len) {
@@ -180,8 +196,8 @@ implementation
       if (!uartFull)
 	{
           /* fire logic */
-          BlinkToRadioMsg* btrpkt = (BlinkToRadioMsg*) payload;
-          fire[btrpkt->nodeId - 33] = btrpkt->fire;
+          btrpkt = (BlinkToRadioMsg*) payload;
+          fire[btrpkt->nodeid - 33] = btrpkt->fire;
           for (i = 0; i < SENSORS; ++i){
             if (!fire[i]){
               all_fire = FALSE;
@@ -189,7 +205,7 @@ implementation
           } 
           if (all_fire)
           {
-            send_fire();
+            uartSendFire(msg);
           }
 
 	  ret = uartQueue[uartIn];
@@ -213,7 +229,6 @@ implementation
     return ret;
   }
 
-  uint8_t tmpLen;
   
   task void uartSendTask() {
     uint8_t len;
