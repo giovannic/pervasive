@@ -252,7 +252,7 @@ typedef struct { unsigned char nxdata[2]; } __attribute__((packed)) nxle_uint16_
 typedef struct { unsigned char nxdata[4]; } __attribute__((packed)) nxle_uint32_t;typedef uint32_t __nesc_nxbase_nxle_uint32_t  ;
 typedef struct { unsigned char nxdata[8]; } __attribute__((packed)) nxle_uint64_t;typedef uint64_t __nesc_nxbase_nxle_uint64_t  ;
 # 116 "/usr/bin/../lib/gcc/avr/4.1.2/../../../../avr/include/string.h" 3
-extern void *memset(void *arg_0x2b6574c90020, int arg_0x2b6574c90288, size_t arg_0x2b6574c90530);
+extern void *memset(void *arg_0x2b05ed8a1020, int arg_0x2b05ed8a1288, size_t arg_0x2b05ed8a1530);
 # 71 "/usr/bin/../lib/gcc/avr/4.1.2/../../../../avr/include/stdlib.h" 3
 #line 68
 typedef struct __nesc_unnamed4242 {
@@ -271,7 +271,7 @@ typedef struct __nesc_unnamed4243 {
 } ldiv_t;
 
 
-typedef int (*__compar_fn_t)(const void *arg_0x2b6574cb1370, const void *arg_0x2b6574cb1648);
+typedef int (*__compar_fn_t)(const void *arg_0x2b05ed8c2370, const void *arg_0x2b05ed8c2648);
 # 23 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/system/tos.h"
 typedef uint8_t bool;
 enum __nesc_unnamed4244 {
@@ -1854,11 +1854,11 @@ static uint16_t MeasureClockC__Atm128Calibrate__baudrateRegister(uint32_t baudra
 # 56 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/TaskBasic.nc"
 static error_t SchedulerBasicP__TaskBasic__postTask(
 # 45 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/system/SchedulerBasicP.nc"
-uint8_t arg_0x2b6574dbe960);
+uint8_t arg_0x2b05ed9cf960);
 # 64 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/TaskBasic.nc"
 static void SchedulerBasicP__TaskBasic__default__runTask(
 # 45 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/system/SchedulerBasicP.nc"
-uint8_t arg_0x2b6574dbe960);
+uint8_t arg_0x2b05ed9cf960);
 # 46 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Scheduler.nc"
 static void SchedulerBasicP__Scheduler__init(void );
 #line 61
@@ -1884,7 +1884,7 @@ message_t *
 
 BaseStationP__UartReceive__receive(
 # 57 "BaseStationP.nc"
-am_id_t arg_0x2b65750164e8, 
+am_id_t arg_0x2b05edc274e8, 
 # 60 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Receive.nc"
 message_t * msg, 
 void * payload, 
@@ -1909,7 +1909,7 @@ message_t *
 
 BaseStationP__RadioReceive__receive(
 # 62 "BaseStationP.nc"
-am_id_t arg_0x2b6575026020, 
+am_id_t arg_0x2b05edc37020, 
 # 60 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Receive.nc"
 message_t * msg, 
 void * payload, 
@@ -1924,7 +1924,7 @@ static void BaseStationP__radioSendTask__runTask(void );
 # 99 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/AMSend.nc"
 static void BaseStationP__RadioSend__sendDone(
 # 61 "BaseStationP.nc"
-am_id_t arg_0x2b657501acb0, 
+am_id_t arg_0x2b05edc2bcb0, 
 # 92 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/AMSend.nc"
 message_t * msg, 
 
@@ -1937,7 +1937,7 @@ error_t error);
 #line 99
 static void BaseStationP__UartSend__sendDone(
 # 56 "BaseStationP.nc"
-am_id_t arg_0x2b65750198c0, 
+am_id_t arg_0x2b05edc2a8c0, 
 # 92 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/AMSend.nc"
 message_t * msg, 
 
@@ -1956,7 +1956,7 @@ message_t *
 
 BaseStationP__RadioSnoop__receive(
 # 63 "BaseStationP.nc"
-am_id_t arg_0x2b6575026b98, 
+am_id_t arg_0x2b05edc37b98, 
 # 60 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Receive.nc"
 message_t * msg, 
 void * payload, 
@@ -2263,31 +2263,31 @@ error_t error);
 # 62 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/interfaces/CC2420Fifo.nc"
 static error_t CC2420SpiP__Fifo__continueRead(
 # 46 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/spi/CC2420SpiP.nc"
-uint8_t arg_0x2b657559f020, 
+uint8_t arg_0x2b05ee1b5020, 
 # 62 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/interfaces/CC2420Fifo.nc"
 uint8_t * data, uint8_t length);
 #line 91
 static void CC2420SpiP__Fifo__default__writeDone(
 # 46 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/spi/CC2420SpiP.nc"
-uint8_t arg_0x2b657559f020, 
+uint8_t arg_0x2b05ee1b5020, 
 # 91 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/interfaces/CC2420Fifo.nc"
 uint8_t * data, uint8_t length, error_t error);
 #line 82
 static cc2420_status_t CC2420SpiP__Fifo__write(
 # 46 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/spi/CC2420SpiP.nc"
-uint8_t arg_0x2b657559f020, 
+uint8_t arg_0x2b05ee1b5020, 
 # 82 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/interfaces/CC2420Fifo.nc"
 uint8_t * data, uint8_t length);
 #line 51
 static cc2420_status_t CC2420SpiP__Fifo__beginRead(
 # 46 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/spi/CC2420SpiP.nc"
-uint8_t arg_0x2b657559f020, 
+uint8_t arg_0x2b05ee1b5020, 
 # 51 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/interfaces/CC2420Fifo.nc"
 uint8_t * data, uint8_t length);
 #line 71
 static void CC2420SpiP__Fifo__default__readDone(
 # 46 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/spi/CC2420SpiP.nc"
-uint8_t arg_0x2b657559f020, 
+uint8_t arg_0x2b05ee1b5020, 
 # 71 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/interfaces/CC2420Fifo.nc"
 uint8_t * data, uint8_t length, error_t error);
 # 31 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/interfaces/ChipSpiResource.nc"
@@ -2305,13 +2305,13 @@ static void CC2420SpiP__SpiResource__granted(void );
 # 63 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/interfaces/CC2420Ram.nc"
 static cc2420_status_t CC2420SpiP__Ram__write(
 # 47 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/spi/CC2420SpiP.nc"
-uint16_t arg_0x2b657559d230, 
+uint16_t arg_0x2b05ee1b4230, 
 # 63 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/interfaces/CC2420Ram.nc"
 uint8_t offset, uint8_t * data, uint8_t length);
 # 47 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/interfaces/CC2420Register.nc"
 static cc2420_status_t CC2420SpiP__Reg__read(
 # 48 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/spi/CC2420SpiP.nc"
-uint8_t arg_0x2b657559c020, 
+uint8_t arg_0x2b05ee1b3020, 
 # 47 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/interfaces/CC2420Register.nc"
 uint16_t *data);
 
@@ -2323,55 +2323,55 @@ uint16_t *data);
 
 static cc2420_status_t CC2420SpiP__Reg__write(
 # 48 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/spi/CC2420SpiP.nc"
-uint8_t arg_0x2b657559c020, 
+uint8_t arg_0x2b05ee1b3020, 
 # 55 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/interfaces/CC2420Register.nc"
 uint16_t data);
 # 110 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Resource.nc"
 static error_t CC2420SpiP__Resource__release(
 # 45 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/spi/CC2420SpiP.nc"
-uint8_t arg_0x2b65755a1da0);
+uint8_t arg_0x2b05ee1b8da0);
 # 87 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Resource.nc"
 static error_t CC2420SpiP__Resource__immediateRequest(
 # 45 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/spi/CC2420SpiP.nc"
-uint8_t arg_0x2b65755a1da0);
+uint8_t arg_0x2b05ee1b8da0);
 # 78 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Resource.nc"
 static error_t CC2420SpiP__Resource__request(
 # 45 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/spi/CC2420SpiP.nc"
-uint8_t arg_0x2b65755a1da0);
+uint8_t arg_0x2b05ee1b8da0);
 # 92 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Resource.nc"
 static void CC2420SpiP__Resource__default__granted(
 # 45 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/spi/CC2420SpiP.nc"
-uint8_t arg_0x2b65755a1da0);
+uint8_t arg_0x2b05ee1b8da0);
 # 118 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Resource.nc"
 static bool CC2420SpiP__Resource__isOwner(
 # 45 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/spi/CC2420SpiP.nc"
-uint8_t arg_0x2b65755a1da0);
+uint8_t arg_0x2b05ee1b8da0);
 # 64 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/TaskBasic.nc"
 static void CC2420SpiP__grant__runTask(void );
 # 45 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/interfaces/CC2420Strobe.nc"
 static cc2420_status_t CC2420SpiP__Strobe__strobe(
 # 49 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/spi/CC2420SpiP.nc"
-uint8_t arg_0x2b657559cd30);
+uint8_t arg_0x2b05ee1b3d30);
 # 51 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Init.nc"
 static error_t StateImplP__Init__init(void );
 # 56 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/State.nc"
 static void StateImplP__State__toIdle(
 # 67 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/system/StateImplP.nc"
-uint8_t arg_0x2b6575608020);
+uint8_t arg_0x2b05ee21f020);
 # 66 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/State.nc"
 static bool StateImplP__State__isState(
 # 67 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/system/StateImplP.nc"
-uint8_t arg_0x2b6575608020, 
+uint8_t arg_0x2b05ee21f020, 
 # 66 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/State.nc"
 uint8_t myState);
 #line 61
 static bool StateImplP__State__isIdle(
 # 67 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/system/StateImplP.nc"
-uint8_t arg_0x2b6575608020);
+uint8_t arg_0x2b05ee21f020);
 # 45 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/State.nc"
 static error_t StateImplP__State__requestState(
 # 67 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/system/StateImplP.nc"
-uint8_t arg_0x2b6575608020, 
+uint8_t arg_0x2b05ee21f020, 
 # 45 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/State.nc"
 uint8_t reqState);
 
@@ -2381,7 +2381,7 @@ uint8_t reqState);
 
 static void StateImplP__State__forceState(
 # 67 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/system/StateImplP.nc"
-uint8_t arg_0x2b6575608020, 
+uint8_t arg_0x2b05ee21f020, 
 # 51 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/State.nc"
 uint8_t reqState);
 # 64 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/TaskBasic.nc"
@@ -2404,7 +2404,7 @@ uint16_t len);
 # 92 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Resource.nc"
 static void Atm128SpiP__ResourceArbiter__granted(
 # 85 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/atm128/spi/Atm128SpiP.nc"
-uint8_t arg_0x2b657564b6e0);
+uint8_t arg_0x2b05ee2676e0);
 # 34 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/SpiByte.nc"
 static uint8_t Atm128SpiP__SpiByte__write(uint8_t tx);
 # 92 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/atm128/spi/Atm128Spi.nc"
@@ -2412,23 +2412,23 @@ static void Atm128SpiP__Spi__dataReady(uint8_t data);
 # 110 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Resource.nc"
 static error_t Atm128SpiP__Resource__release(
 # 81 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/atm128/spi/Atm128SpiP.nc"
-uint8_t arg_0x2b657563a020);
+uint8_t arg_0x2b05ee250020);
 # 87 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Resource.nc"
 static error_t Atm128SpiP__Resource__immediateRequest(
 # 81 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/atm128/spi/Atm128SpiP.nc"
-uint8_t arg_0x2b657563a020);
+uint8_t arg_0x2b05ee250020);
 # 78 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Resource.nc"
 static error_t Atm128SpiP__Resource__request(
 # 81 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/atm128/spi/Atm128SpiP.nc"
-uint8_t arg_0x2b657563a020);
+uint8_t arg_0x2b05ee250020);
 # 92 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Resource.nc"
 static void Atm128SpiP__Resource__default__granted(
 # 81 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/atm128/spi/Atm128SpiP.nc"
-uint8_t arg_0x2b657563a020);
+uint8_t arg_0x2b05ee250020);
 # 118 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Resource.nc"
 static bool Atm128SpiP__Resource__isOwner(
 # 81 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/atm128/spi/Atm128SpiP.nc"
-uint8_t arg_0x2b657563a020);
+uint8_t arg_0x2b05ee250020);
 # 72 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/atm128/spi/Atm128Spi.nc"
 static void HplAtm128SpiP__SPI__sleep(void );
 #line 66
@@ -2477,35 +2477,35 @@ static resource_client_id_t /*Atm128SpiC.Arbiter.Queue*/FcfsResourceQueueC__1__F
 # 43 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/ResourceRequested.nc"
 static void /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__ResourceRequested__default__requested(
 # 52 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/system/SimpleArbiterP.nc"
-uint8_t arg_0x2b65757361a0);
+uint8_t arg_0x2b05ee34d1a0);
 # 51 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/ResourceRequested.nc"
 static void /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__ResourceRequested__default__immediateRequested(
 # 52 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/system/SimpleArbiterP.nc"
-uint8_t arg_0x2b65757361a0);
+uint8_t arg_0x2b05ee34d1a0);
 # 55 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/ResourceConfigure.nc"
 static void /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__ResourceConfigure__default__unconfigure(
 # 56 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/system/SimpleArbiterP.nc"
-uint8_t arg_0x2b65757356e0);
+uint8_t arg_0x2b05ee34c6e0);
 # 49 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/ResourceConfigure.nc"
 static void /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__ResourceConfigure__default__configure(
 # 56 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/system/SimpleArbiterP.nc"
-uint8_t arg_0x2b65757356e0);
+uint8_t arg_0x2b05ee34c6e0);
 # 110 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Resource.nc"
 static error_t /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__Resource__release(
 # 51 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/system/SimpleArbiterP.nc"
-uint8_t arg_0x2b6575737020);
+uint8_t arg_0x2b05ee34e020);
 # 87 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Resource.nc"
 static error_t /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__Resource__immediateRequest(
 # 51 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/system/SimpleArbiterP.nc"
-uint8_t arg_0x2b6575737020);
+uint8_t arg_0x2b05ee34e020);
 # 78 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Resource.nc"
 static error_t /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__Resource__request(
 # 51 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/system/SimpleArbiterP.nc"
-uint8_t arg_0x2b6575737020);
+uint8_t arg_0x2b05ee34e020);
 # 118 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Resource.nc"
 static bool /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__Resource__isOwner(
 # 51 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/system/SimpleArbiterP.nc"
-uint8_t arg_0x2b6575737020);
+uint8_t arg_0x2b05ee34e020);
 # 80 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/ArbiterInfo.nc"
 static bool /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__ArbiterInfo__inUse(void );
 # 64 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/TaskBasic.nc"
@@ -2660,7 +2660,7 @@ static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__TimerFrom__f
 #line 72
 static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__Timer__default__fired(
 # 37 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/timer/VirtualizeTimerC.nc"
-uint8_t arg_0x2b6575ac7778);
+uint8_t arg_0x2b05ee6de778);
 # 71 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/timer/Counter.nc"
 static void /*HilTimerMilliC.CounterToLocalTimeC*/CounterToLocalTimeC__1__Counter__overflow(void );
 # 41 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Random.nc"
@@ -2801,19 +2801,19 @@ uint8_t len);
 # 110 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Resource.nc"
 static error_t CC2420TinyosNetworkP__Resource__release(
 # 46 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/lowpan/CC2420TinyosNetworkP.nc"
-uint8_t arg_0x2b6575bc9550);
+uint8_t arg_0x2b05ee7e0550);
 # 87 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Resource.nc"
 static error_t CC2420TinyosNetworkP__Resource__immediateRequest(
 # 46 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/lowpan/CC2420TinyosNetworkP.nc"
-uint8_t arg_0x2b6575bc9550);
+uint8_t arg_0x2b05ee7e0550);
 # 78 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Resource.nc"
 static error_t CC2420TinyosNetworkP__Resource__request(
 # 46 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/lowpan/CC2420TinyosNetworkP.nc"
-uint8_t arg_0x2b6575bc9550);
+uint8_t arg_0x2b05ee7e0550);
 # 92 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Resource.nc"
 static void CC2420TinyosNetworkP__Resource__default__granted(
 # 46 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/lowpan/CC2420TinyosNetworkP.nc"
-uint8_t arg_0x2b6575bc9550);
+uint8_t arg_0x2b05ee7e0550);
 # 89 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Send.nc"
 static void CC2420TinyosNetworkP__BareSend__default__sendDone(
 #line 85
@@ -2875,13 +2875,13 @@ static void CC2420ActiveMessageP__CC2420Config__syncDone(error_t error);
 # 95 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/interfaces/RadioBackoff.nc"
 static void CC2420ActiveMessageP__RadioBackoff__default__requestCca(
 # 45 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/CC2420ActiveMessageP.nc"
-am_id_t arg_0x2b6575c5dd60, 
+am_id_t arg_0x2b05ee874d60, 
 # 95 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/interfaces/RadioBackoff.nc"
 message_t * msg);
 #line 81
 static void CC2420ActiveMessageP__RadioBackoff__default__requestInitialBackoff(
 # 45 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/CC2420ActiveMessageP.nc"
-am_id_t arg_0x2b6575c5dd60, 
+am_id_t arg_0x2b05ee874d60, 
 # 81 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/interfaces/RadioBackoff.nc"
 message_t * msg);
 
@@ -2892,13 +2892,13 @@ message_t * msg);
 
 static void CC2420ActiveMessageP__RadioBackoff__default__requestCongestionBackoff(
 # 45 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/CC2420ActiveMessageP.nc"
-am_id_t arg_0x2b6575c5dd60, 
+am_id_t arg_0x2b05ee874d60, 
 # 88 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/interfaces/RadioBackoff.nc"
 message_t * msg);
 # 59 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/SendNotifier.nc"
 static void CC2420ActiveMessageP__SendNotifier__default__aboutToSend(
 # 44 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/CC2420ActiveMessageP.nc"
-am_id_t arg_0x2b6575c5d258, 
+am_id_t arg_0x2b05ee874258, 
 # 59 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/SendNotifier.nc"
 am_addr_t dest, 
 #line 57
@@ -2941,7 +2941,7 @@ static uint8_t CC2420ActiveMessageP__Packet__maxPayloadLength(void );
 # 69 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/AMSend.nc"
 static error_t CC2420ActiveMessageP__AMSend__send(
 # 39 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/CC2420ActiveMessageP.nc"
-am_id_t arg_0x2b6575c636c0, 
+am_id_t arg_0x2b05ee87a6c0, 
 # 69 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/AMSend.nc"
 am_addr_t addr, 
 #line 60
@@ -3019,7 +3019,7 @@ uint8_t len);
 # 69 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/AMSend.nc"
 static error_t /*SerialActiveMessageC.AM*/SerialActiveMessageP__0__AMSend__send(
 # 36 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/serial/SerialActiveMessageP.nc"
-am_id_t arg_0x2b6575ce9bc0, 
+am_id_t arg_0x2b05ee8ffbc0, 
 # 69 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/AMSend.nc"
 am_addr_t addr, 
 #line 60
@@ -3098,7 +3098,7 @@ static void /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__receive
 # 64 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Send.nc"
 static error_t /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__Send__send(
 # 40 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/serial/SerialDispatcherP.nc"
-uart_id_t arg_0x2b6575e1d020, 
+uart_id_t arg_0x2b05eea34020, 
 # 56 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Send.nc"
 message_t * msg, 
 
@@ -3112,7 +3112,7 @@ uint8_t len);
 #line 89
 static void /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__Send__default__sendDone(
 # 40 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/serial/SerialDispatcherP.nc"
-uart_id_t arg_0x2b6575e1d020, 
+uart_id_t arg_0x2b05eea34020, 
 # 85 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Send.nc"
 message_t * msg, 
 
@@ -3130,7 +3130,7 @@ message_t *
 
 /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__Receive__default__receive(
 # 39 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/serial/SerialDispatcherP.nc"
-uart_id_t arg_0x2b6575e1e3e0, 
+uart_id_t arg_0x2b05eea353e0, 
 # 60 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Receive.nc"
 message_t * msg, 
 void * payload, 
@@ -3143,17 +3143,17 @@ uint8_t len);
 # 31 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/serial/SerialPacketInfo.nc"
 static uint8_t /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__PacketInfo__default__upperLength(
 # 43 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/serial/SerialDispatcherP.nc"
-uart_id_t arg_0x2b6575e1c308, 
+uart_id_t arg_0x2b05eea32308, 
 # 31 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/serial/SerialPacketInfo.nc"
 message_t *msg, uint8_t dataLinkLen);
 #line 15
 static uint8_t /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__PacketInfo__default__offset(
 # 43 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/serial/SerialDispatcherP.nc"
-uart_id_t arg_0x2b6575e1c308);
+uart_id_t arg_0x2b05eea32308);
 # 23 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/serial/SerialPacketInfo.nc"
 static uint8_t /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__PacketInfo__default__dataLinkLength(
 # 43 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/serial/SerialDispatcherP.nc"
-uart_id_t arg_0x2b6575e1c308, 
+uart_id_t arg_0x2b05eea32308, 
 # 23 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/serial/SerialPacketInfo.nc"
 message_t *msg, uint8_t upperLen);
 # 70 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/serial/SendBytePacket.nc"
@@ -3363,7 +3363,7 @@ static __inline void /*HplAtm128GeneralIOC.PortA.Bit0*/HplAtm128GeneralIOPinP__0
 #line 46
 static __inline void /*HplAtm128GeneralIOC.PortA.Bit1*/HplAtm128GeneralIOPinP__1__IO__set(void );
 
-static void /*HplAtm128GeneralIOC.PortA.Bit1*/HplAtm128GeneralIOPinP__1__IO__toggle(void );
+static inline void /*HplAtm128GeneralIOC.PortA.Bit1*/HplAtm128GeneralIOPinP__1__IO__toggle(void );
 
 
 
@@ -3458,7 +3458,7 @@ int main(void )   ;
 # 64 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/TaskBasic.nc"
 static void SchedulerBasicP__TaskBasic__runTask(
 # 45 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/system/SchedulerBasicP.nc"
-uint8_t arg_0x2b6574dbe960);
+uint8_t arg_0x2b05ed9cf960);
 # 59 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/McuSleep.nc"
 static void SchedulerBasicP__McuSleep__sleep(void );
 # 50 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/system/SchedulerBasicP.nc"
@@ -3591,7 +3591,7 @@ message_t * msg);
 # 69 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/AMSend.nc"
 static error_t BaseStationP__RadioSend__send(
 # 61 "BaseStationP.nc"
-am_id_t arg_0x2b657501acb0, 
+am_id_t arg_0x2b05edc2bcb0, 
 # 69 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/AMSend.nc"
 am_addr_t addr, 
 #line 60
@@ -3608,7 +3608,7 @@ uint8_t len);
 #line 69
 static error_t BaseStationP__UartSend__send(
 # 56 "BaseStationP.nc"
-am_id_t arg_0x2b65750198c0, 
+am_id_t arg_0x2b05edc2a8c0, 
 # 69 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/AMSend.nc"
 am_addr_t addr, 
 #line 60
@@ -3642,18 +3642,18 @@ am_addr_t addr);
 static am_id_t BaseStationP__UartAMPacket__type(
 #line 132
 message_t * amsg);
-# 91 "BaseStationP.nc"
+# 92 "BaseStationP.nc"
 enum BaseStationP____nesc_unnamed4332 {
-#line 91
+#line 92
   BaseStationP__uartSendTask = 0U
 };
-#line 91
+#line 92
 typedef int BaseStationP____nesc_sillytask_uartSendTask[BaseStationP__uartSendTask];
 enum BaseStationP____nesc_unnamed4333 {
-#line 92
+#line 93
   BaseStationP__radioSendTask = 1U
 };
-#line 92
+#line 93
 typedef int BaseStationP____nesc_sillytask_radioSendTask[BaseStationP__radioSendTask];
 #line 73
 enum BaseStationP____nesc_unnamed4334 {
@@ -3672,12 +3672,13 @@ bool BaseStationP__uartBusy;
 bool BaseStationP__uartFull;
 
 message_t BaseStationP__radioQueueBufs[BaseStationP__RADIO_QUEUE_LEN];
+message_t BaseStationP__fireMsg;
 message_t * BaseStationP__radioQueue[BaseStationP__RADIO_QUEUE_LEN];
 uint8_t BaseStationP__radioIn;
-#line 86
+#line 87
 uint8_t BaseStationP__radioOut;
 bool BaseStationP__radioBusy;
-#line 87
+#line 88
 bool BaseStationP__radioFull;
 
 bool BaseStationP__fire[BaseStationP__SENSORS];
@@ -3694,7 +3695,7 @@ static inline void BaseStationP__failBlink(void );
 
 
 static inline void BaseStationP__Boot__booted(void );
-#line 122
+#line 123
 static inline void BaseStationP__RadioControl__startDone(error_t error);
 
 
@@ -3728,20 +3729,18 @@ uint8_t len);
 
 uint8_t BaseStationP__tmpLen;
 
-static void BaseStationP__uartSendFire(message_t *msg);
-#line 189
 static message_t *BaseStationP__receive(message_t *msg, void *payload, uint8_t len);
-#line 233
+#line 208
 static inline void BaseStationP__uartSendTask__runTask(void );
-#line 263
+#line 238
 static inline void BaseStationP__UartSend__sendDone(am_id_t id, message_t *msg, error_t error);
-#line 278
+#line 253
 static inline message_t *BaseStationP__UartReceive__receive(am_id_t id, message_t *msg, 
 void *payload, 
 uint8_t len);
-#line 311
+#line 286
 static inline void BaseStationP__radioSendTask__runTask(void );
-#line 342
+#line 317
 static void BaseStationP__RadioSend__sendDone(am_id_t id, message_t *msg, error_t error);
 # 31 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/GeneralIO.nc"
 static void LedsP__Led0__toggle(void );
@@ -4729,13 +4728,13 @@ uint16_t len);
 # 91 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/interfaces/CC2420Fifo.nc"
 static void CC2420SpiP__Fifo__writeDone(
 # 46 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/spi/CC2420SpiP.nc"
-uint8_t arg_0x2b657559f020, 
+uint8_t arg_0x2b05ee1b5020, 
 # 91 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/interfaces/CC2420Fifo.nc"
 uint8_t * data, uint8_t length, error_t error);
 #line 71
 static void CC2420SpiP__Fifo__readDone(
 # 46 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/spi/CC2420SpiP.nc"
-uint8_t arg_0x2b657559f020, 
+uint8_t arg_0x2b05ee1b5020, 
 # 71 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/interfaces/CC2420Fifo.nc"
 uint8_t * data, uint8_t length, error_t error);
 # 24 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/interfaces/ChipSpiResource.nc"
@@ -4762,7 +4761,7 @@ static bool CC2420SpiP__SpiResource__isOwner(void );
 #line 92
 static void CC2420SpiP__Resource__granted(
 # 45 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/spi/CC2420SpiP.nc"
-uint8_t arg_0x2b65755a1da0);
+uint8_t arg_0x2b05ee1b8da0);
 # 56 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/TaskBasic.nc"
 static error_t CC2420SpiP__grant__postTask(void );
 # 88 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/spi/CC2420SpiP.nc"
@@ -4944,19 +4943,19 @@ error_t error);
 # 110 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Resource.nc"
 static error_t Atm128SpiP__ResourceArbiter__release(
 # 85 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/atm128/spi/Atm128SpiP.nc"
-uint8_t arg_0x2b657564b6e0);
+uint8_t arg_0x2b05ee2676e0);
 # 87 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Resource.nc"
 static error_t Atm128SpiP__ResourceArbiter__immediateRequest(
 # 85 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/atm128/spi/Atm128SpiP.nc"
-uint8_t arg_0x2b657564b6e0);
+uint8_t arg_0x2b05ee2676e0);
 # 78 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Resource.nc"
 static error_t Atm128SpiP__ResourceArbiter__request(
 # 85 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/atm128/spi/Atm128SpiP.nc"
-uint8_t arg_0x2b657564b6e0);
+uint8_t arg_0x2b05ee2676e0);
 # 118 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Resource.nc"
 static bool Atm128SpiP__ResourceArbiter__isOwner(
 # 85 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/atm128/spi/Atm128SpiP.nc"
-uint8_t arg_0x2b657564b6e0);
+uint8_t arg_0x2b05ee2676e0);
 # 72 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/atm128/spi/Atm128Spi.nc"
 static void Atm128SpiP__Spi__sleep(void );
 #line 66
@@ -4980,7 +4979,7 @@ static void Atm128SpiP__Spi__setClockPhase(bool sampleOnTrailing);
 # 92 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Resource.nc"
 static void Atm128SpiP__Resource__granted(
 # 81 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/atm128/spi/Atm128SpiP.nc"
-uint8_t arg_0x2b657563a020);
+uint8_t arg_0x2b05ee250020);
 # 80 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/ArbiterInfo.nc"
 static bool Atm128SpiP__ArbiterInfo__inUse(void );
 # 44 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/McuPowerState.nc"
@@ -5130,19 +5129,19 @@ static inline error_t /*Atm128SpiC.Arbiter.Queue*/FcfsResourceQueueC__1__FcfsQue
 # 43 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/ResourceRequested.nc"
 static void /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__ResourceRequested__requested(
 # 52 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/system/SimpleArbiterP.nc"
-uint8_t arg_0x2b65757361a0);
+uint8_t arg_0x2b05ee34d1a0);
 # 51 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/ResourceRequested.nc"
 static void /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__ResourceRequested__immediateRequested(
 # 52 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/system/SimpleArbiterP.nc"
-uint8_t arg_0x2b65757361a0);
+uint8_t arg_0x2b05ee34d1a0);
 # 55 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/ResourceConfigure.nc"
 static void /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__ResourceConfigure__unconfigure(
 # 56 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/system/SimpleArbiterP.nc"
-uint8_t arg_0x2b65757356e0);
+uint8_t arg_0x2b05ee34c6e0);
 # 49 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/ResourceConfigure.nc"
 static void /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__ResourceConfigure__configure(
 # 56 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/system/SimpleArbiterP.nc"
-uint8_t arg_0x2b65757356e0);
+uint8_t arg_0x2b05ee34c6e0);
 # 69 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/ResourceQueue.nc"
 static error_t /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__Queue__enqueue(resource_client_id_t id);
 #line 43
@@ -5152,7 +5151,7 @@ static resource_client_id_t /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__Que
 # 92 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Resource.nc"
 static void /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__Resource__granted(
 # 51 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/system/SimpleArbiterP.nc"
-uint8_t arg_0x2b6575737020);
+uint8_t arg_0x2b05ee34e020);
 # 56 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/TaskBasic.nc"
 static error_t /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__grantedTask__postTask(void );
 # 69 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/system/SimpleArbiterP.nc"
@@ -5922,7 +5921,7 @@ static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__TimerFrom__s
 
 static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__Timer__fired(
 # 37 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/timer/VirtualizeTimerC.nc"
-uint8_t arg_0x2b6575ac7778);
+uint8_t arg_0x2b05ee6de778);
 #line 60
 enum /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0____nesc_unnamed4362 {
 #line 60
@@ -6166,7 +6165,7 @@ uint8_t len);
 # 92 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Resource.nc"
 static void CC2420TinyosNetworkP__Resource__granted(
 # 46 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/lowpan/CC2420TinyosNetworkP.nc"
-uint8_t arg_0x2b6575bc9550);
+uint8_t arg_0x2b05ee7e0550);
 # 89 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Send.nc"
 static void CC2420TinyosNetworkP__BareSend__sendDone(
 #line 85
@@ -6311,13 +6310,13 @@ static uint16_t CC2420ActiveMessageP__CC2420Config__getPanAddr(void );
 # 95 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/interfaces/RadioBackoff.nc"
 static void CC2420ActiveMessageP__RadioBackoff__requestCca(
 # 45 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/CC2420ActiveMessageP.nc"
-am_id_t arg_0x2b6575c5dd60, 
+am_id_t arg_0x2b05ee874d60, 
 # 95 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/interfaces/RadioBackoff.nc"
 message_t * msg);
 #line 81
 static void CC2420ActiveMessageP__RadioBackoff__requestInitialBackoff(
 # 45 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/CC2420ActiveMessageP.nc"
-am_id_t arg_0x2b6575c5dd60, 
+am_id_t arg_0x2b05ee874d60, 
 # 81 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/interfaces/RadioBackoff.nc"
 message_t * msg);
 
@@ -6328,13 +6327,13 @@ message_t * msg);
 
 static void CC2420ActiveMessageP__RadioBackoff__requestCongestionBackoff(
 # 45 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/CC2420ActiveMessageP.nc"
-am_id_t arg_0x2b6575c5dd60, 
+am_id_t arg_0x2b05ee874d60, 
 # 88 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/interfaces/RadioBackoff.nc"
 message_t * msg);
 # 59 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/SendNotifier.nc"
 static void CC2420ActiveMessageP__SendNotifier__aboutToSend(
 # 44 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/CC2420ActiveMessageP.nc"
-am_id_t arg_0x2b6575c5d258, 
+am_id_t arg_0x2b05ee874258, 
 # 59 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/SendNotifier.nc"
 am_addr_t dest, 
 #line 57
@@ -6342,7 +6341,7 @@ message_t * msg);
 # 99 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/AMSend.nc"
 static void CC2420ActiveMessageP__AMSend__sendDone(
 # 39 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/CC2420ActiveMessageP.nc"
-am_id_t arg_0x2b6575c636c0, 
+am_id_t arg_0x2b05ee87a6c0, 
 # 92 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/AMSend.nc"
 message_t * msg, 
 
@@ -6361,7 +6360,7 @@ message_t *
 
 CC2420ActiveMessageP__Snoop__receive(
 # 41 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/CC2420ActiveMessageP.nc"
-am_id_t arg_0x2b6575c61480, 
+am_id_t arg_0x2b05ee877480, 
 # 60 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Receive.nc"
 message_t * msg, 
 void * payload, 
@@ -6389,7 +6388,7 @@ message_t *
 
 CC2420ActiveMessageP__Receive__receive(
 # 40 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/CC2420ActiveMessageP.nc"
-am_id_t arg_0x2b6575c62908, 
+am_id_t arg_0x2b05ee879908, 
 # 60 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Receive.nc"
 message_t * msg, 
 void * payload, 
@@ -6424,7 +6423,7 @@ static am_addr_t CC2420ActiveMessageP__AMPacket__destination(message_t *amsg);
 
 
 
-static am_addr_t CC2420ActiveMessageP__AMPacket__source(message_t *amsg);
+static inline am_addr_t CC2420ActiveMessageP__AMPacket__source(message_t *amsg);
 
 
 
@@ -6451,7 +6450,7 @@ static inline void CC2420ActiveMessageP__Packet__clear(message_t *msg);
 
 
 
-static uint8_t CC2420ActiveMessageP__Packet__payloadLength(message_t *msg);
+static inline uint8_t CC2420ActiveMessageP__Packet__payloadLength(message_t *msg);
 
 
 
@@ -6522,7 +6521,7 @@ uint8_t len);
 # 99 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/AMSend.nc"
 static void /*SerialActiveMessageC.AM*/SerialActiveMessageP__0__AMSend__sendDone(
 # 36 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/serial/SerialActiveMessageP.nc"
-am_id_t arg_0x2b6575ce9bc0, 
+am_id_t arg_0x2b05ee8ffbc0, 
 # 92 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/AMSend.nc"
 message_t * msg, 
 
@@ -6541,7 +6540,7 @@ message_t *
 
 /*SerialActiveMessageC.AM*/SerialActiveMessageP__0__Receive__receive(
 # 37 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/serial/SerialActiveMessageP.nc"
-am_id_t arg_0x2b6575ce6ce8, 
+am_id_t arg_0x2b05ee8fcce8, 
 # 60 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Receive.nc"
 message_t * msg, 
 void * payload, 
@@ -6560,7 +6559,7 @@ static inline serial_header_t * /*SerialActiveMessageC.AM*/SerialActiveMessageP_
 
 
 
-static error_t /*SerialActiveMessageC.AM*/SerialActiveMessageP__0__AMSend__send(am_id_t id, am_addr_t dest, 
+static inline error_t /*SerialActiveMessageC.AM*/SerialActiveMessageP__0__AMSend__send(am_id_t id, am_addr_t dest, 
 message_t *msg, 
 uint8_t len);
 #line 90
@@ -6570,7 +6569,7 @@ static inline message_t */*SerialActiveMessageC.AM*/SerialActiveMessageP__0__Sub
 
 
 
-static void /*SerialActiveMessageC.AM*/SerialActiveMessageP__0__Packet__clear(message_t *msg);
+static inline void /*SerialActiveMessageC.AM*/SerialActiveMessageP__0__Packet__clear(message_t *msg);
 
 
 
@@ -6601,7 +6600,7 @@ static inline am_addr_t /*SerialActiveMessageC.AM*/SerialActiveMessageP__0__AMPa
 
 
 
-static void /*SerialActiveMessageC.AM*/SerialActiveMessageP__0__AMPacket__setSource(message_t *amsg, am_addr_t addr);
+static inline void /*SerialActiveMessageC.AM*/SerialActiveMessageP__0__AMPacket__setSource(message_t *amsg, am_addr_t addr);
 
 
 
@@ -7007,7 +7006,7 @@ static error_t /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__rece
 # 89 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Send.nc"
 static void /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__Send__sendDone(
 # 40 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/serial/SerialDispatcherP.nc"
-uart_id_t arg_0x2b6575e1d020, 
+uart_id_t arg_0x2b05eea34020, 
 # 85 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Send.nc"
 message_t * msg, 
 
@@ -7025,7 +7024,7 @@ message_t *
 
 /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__Receive__receive(
 # 39 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/serial/SerialDispatcherP.nc"
-uart_id_t arg_0x2b6575e1e3e0, 
+uart_id_t arg_0x2b05eea353e0, 
 # 60 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Receive.nc"
 message_t * msg, 
 void * payload, 
@@ -7038,17 +7037,17 @@ uint8_t len);
 # 31 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/serial/SerialPacketInfo.nc"
 static uint8_t /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__PacketInfo__upperLength(
 # 43 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/serial/SerialDispatcherP.nc"
-uart_id_t arg_0x2b6575e1c308, 
+uart_id_t arg_0x2b05eea32308, 
 # 31 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/serial/SerialPacketInfo.nc"
 message_t *msg, uint8_t dataLinkLen);
 #line 15
 static uint8_t /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__PacketInfo__offset(
 # 43 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/serial/SerialDispatcherP.nc"
-uart_id_t arg_0x2b6575e1c308);
+uart_id_t arg_0x2b05eea32308);
 # 23 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/serial/SerialPacketInfo.nc"
 static uint8_t /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__PacketInfo__dataLinkLength(
 # 43 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/serial/SerialDispatcherP.nc"
-uart_id_t arg_0x2b6575e1c308, 
+uart_id_t arg_0x2b05eea32308, 
 # 23 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/serial/SerialPacketInfo.nc"
 message_t *msg, uint8_t upperLen);
 # 60 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/serial/SendBytePacket.nc"
@@ -8186,44 +8185,44 @@ inline static void BaseStationP__Leds__led2Toggle(void ){
 #line 89
 }
 #line 89
-# 98 "BaseStationP.nc"
+# 99 "BaseStationP.nc"
 static inline void BaseStationP__failBlink(void )
-#line 98
+#line 99
 {
   BaseStationP__Leds__led2Toggle();
 }
 
-#line 263
+#line 238
 static inline void BaseStationP__UartSend__sendDone(am_id_t id, message_t *msg, error_t error)
-#line 263
+#line 238
 {
   if (error != SUCCESS) {
     BaseStationP__failBlink();
     }
   else {
-#line 267
+#line 242
     { __nesc_atomic_t __nesc_atomic = __nesc_atomic_start();
       if (msg == BaseStationP__uartQueue[BaseStationP__uartOut]) 
         {
           if (++BaseStationP__uartOut >= BaseStationP__UART_QUEUE_LEN) {
             BaseStationP__uartOut = 0;
             }
-#line 272
+#line 247
           if (BaseStationP__uartFull) {
             BaseStationP__uartFull = FALSE;
             }
         }
-#line 275
+#line 250
       __nesc_atomic_end(__nesc_atomic); }
     }
-#line 275
+#line 250
   BaseStationP__uartSendTask__postTask();
 }
 
 # 99 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/AMSend.nc"
-inline static void /*SerialActiveMessageC.AM*/SerialActiveMessageP__0__AMSend__sendDone(am_id_t arg_0x2b6575ce9bc0, message_t * msg, error_t error){
+inline static void /*SerialActiveMessageC.AM*/SerialActiveMessageP__0__AMSend__sendDone(am_id_t arg_0x2b05ee8ffbc0, message_t * msg, error_t error){
 #line 99
-  BaseStationP__UartSend__sendDone(arg_0x2b6575ce9bc0, msg, error);
+  BaseStationP__UartSend__sendDone(arg_0x2b05ee8ffbc0, msg, error);
 #line 99
 }
 #line 99
@@ -8242,9 +8241,9 @@ static inline void /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__
 }
 
 # 89 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Send.nc"
-inline static void /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__Send__sendDone(uart_id_t arg_0x2b6575e1d020, message_t * msg, error_t error){
+inline static void /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__Send__sendDone(uart_id_t arg_0x2b05eea34020, message_t * msg, error_t error){
 #line 89
-  switch (arg_0x2b6575e1d020) {
+  switch (arg_0x2b05eea34020) {
 #line 89
     case TOS_SERIAL_ACTIVE_MESSAGE_ID:
 #line 89
@@ -8254,7 +8253,7 @@ inline static void /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__
 #line 89
     default:
 #line 89
-      /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__Send__default__sendDone(arg_0x2b6575e1d020, msg, error);
+      /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__Send__default__sendDone(arg_0x2b05eea34020, msg, error);
 #line 89
       break;
 #line 89
@@ -8323,9 +8322,9 @@ static inline void /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__
     }
 }
 
-# 94 "BaseStationP.nc"
+# 95 "BaseStationP.nc"
 static inline void BaseStationP__dropBlink(void )
-#line 94
+#line 95
 {
   BaseStationP__Leds__led2Toggle();
 }
@@ -8345,11 +8344,11 @@ inline static error_t BaseStationP__radioSendTask__postTask(void ){
 #line 56
 }
 #line 56
-# 278 "BaseStationP.nc"
+# 253 "BaseStationP.nc"
 static inline message_t *BaseStationP__UartReceive__receive(am_id_t id, message_t *msg, 
 void *payload, 
 uint8_t len)
-#line 280
+#line 255
 {
   message_t *ret = msg;
   bool reflectToken = FALSE;
@@ -8363,7 +8362,7 @@ uint8_t len)
         if (++BaseStationP__radioIn >= BaseStationP__RADIO_QUEUE_LEN) {
           BaseStationP__radioIn = 0;
           }
-#line 292
+#line 267
         if (BaseStationP__radioIn == BaseStationP__radioOut) {
           BaseStationP__radioFull = TRUE;
           }
@@ -8376,7 +8375,7 @@ uint8_t len)
     else {
       BaseStationP__dropBlink();
       }
-#line 303
+#line 278
     __nesc_atomic_end(__nesc_atomic); }
   if (reflectToken) {
     }
@@ -8386,13 +8385,13 @@ uint8_t len)
 }
 
 # 67 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Receive.nc"
-inline static message_t * /*SerialActiveMessageC.AM*/SerialActiveMessageP__0__Receive__receive(am_id_t arg_0x2b6575ce6ce8, message_t * msg, void * payload, uint8_t len){
+inline static message_t * /*SerialActiveMessageC.AM*/SerialActiveMessageP__0__Receive__receive(am_id_t arg_0x2b05ee8fcce8, message_t * msg, void * payload, uint8_t len){
 #line 67
   nx_struct message_t *__nesc_result;
 #line 67
 
 #line 67
-  __nesc_result = BaseStationP__UartReceive__receive(arg_0x2b6575ce6ce8, msg, payload, len);
+  __nesc_result = BaseStationP__UartReceive__receive(arg_0x2b05ee8fcce8, msg, payload, len);
 #line 67
 
 #line 67
@@ -8417,13 +8416,13 @@ uint8_t len)
 }
 
 # 67 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Receive.nc"
-inline static message_t * /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__Receive__receive(uart_id_t arg_0x2b6575e1e3e0, message_t * msg, void * payload, uint8_t len){
+inline static message_t * /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__Receive__receive(uart_id_t arg_0x2b05eea353e0, message_t * msg, void * payload, uint8_t len){
 #line 67
   nx_struct message_t *__nesc_result;
 #line 67
 
 #line 67
-  switch (arg_0x2b6575e1e3e0) {
+  switch (arg_0x2b05eea353e0) {
 #line 67
     case TOS_SERIAL_ACTIVE_MESSAGE_ID:
 #line 67
@@ -8433,7 +8432,7 @@ inline static message_t * /*SerialDispatcherC.SerialDispatcherP*/SerialDispatche
 #line 67
     default:
 #line 67
-      __nesc_result = /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__Receive__default__receive(arg_0x2b6575e1e3e0, msg, payload, len);
+      __nesc_result = /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__Receive__default__receive(arg_0x2b05eea353e0, msg, payload, len);
 #line 67
       break;
 #line 67
@@ -8461,13 +8460,13 @@ uint8_t dataLinkLen)
 }
 
 # 31 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/serial/SerialPacketInfo.nc"
-inline static uint8_t /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__PacketInfo__upperLength(uart_id_t arg_0x2b6575e1c308, message_t *msg, uint8_t dataLinkLen){
+inline static uint8_t /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__PacketInfo__upperLength(uart_id_t arg_0x2b05eea32308, message_t *msg, uint8_t dataLinkLen){
 #line 31
   unsigned char __nesc_result;
 #line 31
 
 #line 31
-  switch (arg_0x2b6575e1c308) {
+  switch (arg_0x2b05eea32308) {
 #line 31
     case TOS_SERIAL_ACTIVE_MESSAGE_ID:
 #line 31
@@ -8477,7 +8476,7 @@ inline static uint8_t /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__
 #line 31
     default:
 #line 31
-      __nesc_result = /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__PacketInfo__default__upperLength(arg_0x2b6575e1c308, msg, dataLinkLen);
+      __nesc_result = /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__PacketInfo__default__upperLength(arg_0x2b05eea32308, msg, dataLinkLen);
 #line 31
       break;
 #line 31
@@ -8504,13 +8503,13 @@ static inline uint8_t /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__
 }
 
 # 15 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/serial/SerialPacketInfo.nc"
-inline static uint8_t /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__PacketInfo__offset(uart_id_t arg_0x2b6575e1c308){
+inline static uint8_t /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__PacketInfo__offset(uart_id_t arg_0x2b05eea32308){
 #line 15
   unsigned char __nesc_result;
 #line 15
 
 #line 15
-  switch (arg_0x2b6575e1c308) {
+  switch (arg_0x2b05eea32308) {
 #line 15
     case TOS_SERIAL_ACTIVE_MESSAGE_ID:
 #line 15
@@ -8520,7 +8519,7 @@ inline static uint8_t /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__
 #line 15
     default:
 #line 15
-      __nesc_result = /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__PacketInfo__default__offset(arg_0x2b6575e1c308);
+      __nesc_result = /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__PacketInfo__default__offset(arg_0x2b05eea32308);
 #line 15
       break;
 #line 15
@@ -8566,9 +8565,9 @@ static inline void /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__
     __nesc_atomic_end(__nesc_atomic); }
 }
 
-# 134 "BaseStationP.nc"
+# 135 "BaseStationP.nc"
 static inline void BaseStationP__SerialControl__stopDone(error_t error)
-#line 134
+#line 135
 {
 }
 
@@ -8714,9 +8713,9 @@ static inline void SerialP__stopDoneTask__runTask(void )
   SerialP__SerialFlush__flush();
 }
 
-# 128 "BaseStationP.nc"
+# 129 "BaseStationP.nc"
 static inline void BaseStationP__SerialControl__startDone(error_t error)
-#line 128
+#line 129
 {
   if (error == SUCCESS) {
       BaseStationP__uartFull = FALSE;
@@ -9227,9 +9226,9 @@ static inline void CC2420TinyosNetworkP__Resource__default__granted(uint8_t clie
 }
 
 # 92 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Resource.nc"
-inline static void CC2420TinyosNetworkP__Resource__granted(uint8_t arg_0x2b6575bc9550){
+inline static void CC2420TinyosNetworkP__Resource__granted(uint8_t arg_0x2b05ee7e0550){
 #line 92
-  switch (arg_0x2b6575bc9550) {
+  switch (arg_0x2b05ee7e0550) {
 #line 92
     case CC2420ActiveMessageC__CC2420_AM_SEND_ID:
 #line 92
@@ -9239,7 +9238,7 @@ inline static void CC2420TinyosNetworkP__Resource__granted(uint8_t arg_0x2b6575b
 #line 92
     default:
 #line 92
-      CC2420TinyosNetworkP__Resource__default__granted(arg_0x2b6575bc9550);
+      CC2420TinyosNetworkP__Resource__default__granted(arg_0x2b05ee7e0550);
 #line 92
       break;
 #line 92
@@ -9548,9 +9547,9 @@ message_t *msg)
 }
 
 # 95 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/interfaces/RadioBackoff.nc"
-inline static void CC2420ActiveMessageP__RadioBackoff__requestCca(am_id_t arg_0x2b6575c5dd60, message_t * msg){
+inline static void CC2420ActiveMessageP__RadioBackoff__requestCca(am_id_t arg_0x2b05ee874d60, message_t * msg){
 #line 95
-    CC2420ActiveMessageP__RadioBackoff__default__requestCca(arg_0x2b6575c5dd60, msg);
+    CC2420ActiveMessageP__RadioBackoff__default__requestCca(arg_0x2b05ee874d60, msg);
 #line 95
 }
 #line 95
@@ -9743,13 +9742,13 @@ inline static error_t CC2420SpiP__WorkingState__requestState(uint8_t reqState){
 }
 #line 45
 # 118 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Resource.nc"
-inline static bool Atm128SpiP__ResourceArbiter__isOwner(uint8_t arg_0x2b657564b6e0){
+inline static bool Atm128SpiP__ResourceArbiter__isOwner(uint8_t arg_0x2b05ee2676e0){
 #line 118
   unsigned char __nesc_result;
 #line 118
 
 #line 118
-  __nesc_result = /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__Resource__isOwner(arg_0x2b657564b6e0);
+  __nesc_result = /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__Resource__isOwner(arg_0x2b05ee2676e0);
 #line 118
 
 #line 118
@@ -9837,9 +9836,9 @@ static inline void /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__ResourceConf
 }
 
 # 49 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/ResourceConfigure.nc"
-inline static void /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__ResourceConfigure__configure(uint8_t arg_0x2b65757356e0){
+inline static void /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__ResourceConfigure__configure(uint8_t arg_0x2b05ee34c6e0){
 #line 49
-    /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__ResourceConfigure__default__configure(arg_0x2b65757356e0);
+    /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__ResourceConfigure__default__configure(arg_0x2b05ee34c6e0);
 #line 49
 }
 #line 49
@@ -9850,9 +9849,9 @@ static inline void /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__ResourceRequ
 }
 
 # 51 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/ResourceRequested.nc"
-inline static void /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__ResourceRequested__immediateRequested(uint8_t arg_0x2b65757361a0){
+inline static void /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__ResourceRequested__immediateRequested(uint8_t arg_0x2b05ee34d1a0){
 #line 51
-    /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__ResourceRequested__default__immediateRequested(arg_0x2b65757361a0);
+    /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__ResourceRequested__default__immediateRequested(arg_0x2b05ee34d1a0);
 #line 51
 }
 #line 51
@@ -9890,13 +9889,13 @@ static inline error_t /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__Resource_
 }
 
 # 87 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Resource.nc"
-inline static error_t Atm128SpiP__ResourceArbiter__immediateRequest(uint8_t arg_0x2b657564b6e0){
+inline static error_t Atm128SpiP__ResourceArbiter__immediateRequest(uint8_t arg_0x2b05ee2676e0){
 #line 87
   unsigned char __nesc_result;
 #line 87
 
 #line 87
-  __nesc_result = /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__Resource__immediateRequest(arg_0x2b657564b6e0);
+  __nesc_result = /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__Resource__immediateRequest(arg_0x2b05ee2676e0);
 #line 87
 
 #line 87
@@ -10238,9 +10237,9 @@ static inline void /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__ResourceRequ
 }
 
 # 43 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/ResourceRequested.nc"
-inline static void /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__ResourceRequested__requested(uint8_t arg_0x2b65757361a0){
+inline static void /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__ResourceRequested__requested(uint8_t arg_0x2b05ee34d1a0){
 #line 43
-    /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__ResourceRequested__default__requested(arg_0x2b65757361a0);
+    /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__ResourceRequested__default__requested(arg_0x2b05ee34d1a0);
 #line 43
 }
 #line 43
@@ -10278,13 +10277,13 @@ static inline error_t /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__Resource_
 }
 
 # 78 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Resource.nc"
-inline static error_t Atm128SpiP__ResourceArbiter__request(uint8_t arg_0x2b657564b6e0){
+inline static error_t Atm128SpiP__ResourceArbiter__request(uint8_t arg_0x2b05ee2676e0){
 #line 78
   unsigned char __nesc_result;
 #line 78
 
 #line 78
-  __nesc_result = /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__Resource__request(arg_0x2b657564b6e0);
+  __nesc_result = /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__Resource__request(arg_0x2b05ee2676e0);
 #line 78
 
 #line 78
@@ -10682,9 +10681,9 @@ static inline void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__Timer
 }
 
 # 72 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/timer/Timer.nc"
-inline static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__Timer__fired(uint8_t arg_0x2b6575ac7778){
+inline static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__Timer__fired(uint8_t arg_0x2b05ee6de778){
 #line 72
-    /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__Timer__default__fired(arg_0x2b6575ac7778);
+    /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__Timer__default__fired(arg_0x2b05ee6de778);
 #line 72
 }
 #line 72
@@ -10914,23 +10913,23 @@ inline static cc2420_header_t * CC2420TinyosNetworkP__CC2420PacketBody__getHeade
 #line 42
 }
 #line 42
-# 141 "BaseStationP.nc"
+# 142 "BaseStationP.nc"
 static inline message_t *BaseStationP__RadioSnoop__receive(am_id_t id, message_t *msg, 
 void *payload, 
 uint8_t len)
-#line 143
+#line 144
 {
   return BaseStationP__receive(msg, payload, len);
 }
 
 # 67 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Receive.nc"
-inline static message_t * CC2420ActiveMessageP__Snoop__receive(am_id_t arg_0x2b6575c61480, message_t * msg, void * payload, uint8_t len){
+inline static message_t * CC2420ActiveMessageP__Snoop__receive(am_id_t arg_0x2b05ee877480, message_t * msg, void * payload, uint8_t len){
 #line 67
   nx_struct message_t *__nesc_result;
 #line 67
 
 #line 67
-  __nesc_result = BaseStationP__RadioSnoop__receive(arg_0x2b6575c61480, msg, payload, len);
+  __nesc_result = BaseStationP__RadioSnoop__receive(arg_0x2b05ee877480, msg, payload, len);
 #line 67
 
 #line 67
@@ -10938,23 +10937,23 @@ inline static message_t * CC2420ActiveMessageP__Snoop__receive(am_id_t arg_0x2b6
 #line 67
 }
 #line 67
-# 147 "BaseStationP.nc"
+# 148 "BaseStationP.nc"
 static inline message_t *BaseStationP__RadioReceive__receive(am_id_t id, message_t *msg, 
 void *payload, 
 uint8_t len)
-#line 149
+#line 150
 {
   return BaseStationP__receive(msg, payload, len);
 }
 
 # 67 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Receive.nc"
-inline static message_t * CC2420ActiveMessageP__Receive__receive(am_id_t arg_0x2b6575c62908, message_t * msg, void * payload, uint8_t len){
+inline static message_t * CC2420ActiveMessageP__Receive__receive(am_id_t arg_0x2b05ee879908, message_t * msg, void * payload, uint8_t len){
 #line 67
   nx_struct message_t *__nesc_result;
 #line 67
 
 #line 67
-  __nesc_result = BaseStationP__RadioReceive__receive(arg_0x2b6575c62908, msg, payload, len);
+  __nesc_result = BaseStationP__RadioReceive__receive(arg_0x2b05ee879908, msg, payload, len);
 #line 67
 
 #line 67
@@ -11454,175 +11453,6 @@ inline static void * BaseStationP__RadioPacket__getPayload(message_t * msg, uint
 #line 115
 }
 #line 115
-# 315 "/usr/lib/ncc/nesc_nx.h"
-static __inline  uint16_t __nesc_hton_uint16(void * target, uint16_t value)
-#line 315
-{
-  uint8_t *base = target;
-
-#line 317
-  base[1] = value;
-  base[0] = value >> 8;
-  return value;
-}
-
-# 120 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/serial/SerialActiveMessageP.nc"
-static inline uint8_t /*SerialActiveMessageC.AM*/SerialActiveMessageP__0__Packet__maxPayloadLength(void )
-#line 120
-{
-  return 28;
-}
-
-# 522 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/serial/SerialP.nc"
-static inline error_t SerialP__SendBytePacket__startSend(uint8_t b)
-#line 522
-{
-  bool not_busy = FALSE;
-
-#line 524
-  { __nesc_atomic_t __nesc_atomic = __nesc_atomic_start();
-#line 524
-    {
-      if (SerialP__txBuf[SerialP__TX_DATA_INDEX].state == SerialP__BUFFER_AVAILABLE) {
-          SerialP__txBuf[SerialP__TX_DATA_INDEX].state = SerialP__BUFFER_FILLING;
-          SerialP__txBuf[SerialP__TX_DATA_INDEX].buf = b;
-          not_busy = TRUE;
-        }
-    }
-#line 530
-    __nesc_atomic_end(__nesc_atomic); }
-  if (not_busy) {
-      SerialP__MaybeScheduleTx();
-      return SUCCESS;
-    }
-  return EBUSY;
-}
-
-# 51 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/serial/SendBytePacket.nc"
-inline static error_t /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__SendBytePacket__startSend(uint8_t first_byte){
-#line 51
-  unsigned char __nesc_result;
-#line 51
-
-#line 51
-  __nesc_result = SerialP__SendBytePacket__startSend(first_byte);
-#line 51
-
-#line 51
-  return __nesc_result;
-#line 51
-}
-#line 51
-# 43 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/serial/SerialPacketInfoActiveMessageP.nc"
-static inline uint8_t SerialPacketInfoActiveMessageP__Info__dataLinkLength(message_t *msg, uint8_t upperLen)
-#line 43
-{
-  return upperLen + sizeof(serial_header_t );
-}
-
-# 350 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/serial/SerialDispatcherP.nc"
-static inline uint8_t /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__PacketInfo__default__dataLinkLength(uart_id_t id, message_t *msg, 
-uint8_t upperLen)
-#line 351
-{
-  return 0;
-}
-
-# 23 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/serial/SerialPacketInfo.nc"
-inline static uint8_t /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__PacketInfo__dataLinkLength(uart_id_t arg_0x2b6575e1c308, message_t *msg, uint8_t upperLen){
-#line 23
-  unsigned char __nesc_result;
-#line 23
-
-#line 23
-  switch (arg_0x2b6575e1c308) {
-#line 23
-    case TOS_SERIAL_ACTIVE_MESSAGE_ID:
-#line 23
-      __nesc_result = SerialPacketInfoActiveMessageP__Info__dataLinkLength(msg, upperLen);
-#line 23
-      break;
-#line 23
-    default:
-#line 23
-      __nesc_result = /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__PacketInfo__default__dataLinkLength(arg_0x2b6575e1c308, msg, upperLen);
-#line 23
-      break;
-#line 23
-    }
-#line 23
-
-#line 23
-  return __nesc_result;
-#line 23
-}
-#line 23
-# 100 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/serial/SerialDispatcherP.nc"
-static inline error_t /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__Send__send(uint8_t id, message_t *msg, uint8_t len)
-#line 100
-{
-  if (/*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__sendState != /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__SEND_STATE_IDLE) {
-      return EBUSY;
-    }
-
-  { __nesc_atomic_t __nesc_atomic = __nesc_atomic_start();
-#line 105
-    {
-      /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__sendIndex = /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__PacketInfo__offset(id);
-      if (/*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__sendIndex > sizeof(message_header_t )) {
-          {
-            unsigned char __nesc_temp = 
-#line 108
-            ESIZE;
-
-            {
-#line 108
-              __nesc_atomic_end(__nesc_atomic); 
-#line 108
-              return __nesc_temp;
-            }
-          }
-        }
-#line 111
-      /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__sendError = SUCCESS;
-      /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__sendBuffer = (uint8_t *)msg;
-      /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__sendState = /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__SEND_STATE_DATA;
-      /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__sendId = id;
-      /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__sendCancelled = FALSE;
-
-
-
-
-
-
-      /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__sendLen = /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__PacketInfo__dataLinkLength(id, msg, len) + /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__sendIndex;
-    }
-#line 123
-    __nesc_atomic_end(__nesc_atomic); }
-  if (/*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__SendBytePacket__startSend(id) == SUCCESS) {
-      return SUCCESS;
-    }
-  else {
-      /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__sendState = /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__SEND_STATE_IDLE;
-      return FAIL;
-    }
-}
-
-# 64 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Send.nc"
-inline static error_t /*SerialActiveMessageC.AM*/SerialActiveMessageP__0__SubSend__send(message_t * msg, uint8_t len){
-#line 64
-  unsigned char __nesc_result;
-#line 64
-
-#line 64
-  __nesc_result = /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__Send__send(TOS_SERIAL_ACTIVE_MESSAGE_ID, msg, len);
-#line 64
-
-#line 64
-  return __nesc_result;
-#line 64
-}
-#line 64
 # 95 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/spi/CC2420SpiP.nc"
 static inline void CC2420SpiP__ChipSpiResource__abortRelease(void )
 #line 95
@@ -11702,9 +11532,9 @@ static inline void /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__ResourceConf
 }
 
 # 55 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/ResourceConfigure.nc"
-inline static void /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__ResourceConfigure__unconfigure(uint8_t arg_0x2b65757356e0){
+inline static void /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__ResourceConfigure__unconfigure(uint8_t arg_0x2b05ee34c6e0){
 #line 55
-    /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__ResourceConfigure__default__unconfigure(arg_0x2b65757356e0);
+    /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__ResourceConfigure__default__unconfigure(arg_0x2b05ee34c6e0);
 #line 55
 }
 #line 55
@@ -11823,13 +11653,13 @@ static inline error_t /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__Resource_
 }
 
 # 110 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Resource.nc"
-inline static error_t Atm128SpiP__ResourceArbiter__release(uint8_t arg_0x2b657564b6e0){
+inline static error_t Atm128SpiP__ResourceArbiter__release(uint8_t arg_0x2b05ee2676e0){
 #line 110
   unsigned char __nesc_result;
 #line 110
 
 #line 110
-  __nesc_result = /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__Resource__release(arg_0x2b657564b6e0);
+  __nesc_result = /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__Resource__release(arg_0x2b05ee2676e0);
 #line 110
 
 #line 110
@@ -12013,9 +11843,9 @@ static inline void Atm128SpiP__Resource__default__granted(uint8_t id)
 }
 
 # 92 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Resource.nc"
-inline static void Atm128SpiP__Resource__granted(uint8_t arg_0x2b657563a020){
+inline static void Atm128SpiP__Resource__granted(uint8_t arg_0x2b05ee250020){
 #line 92
-  switch (arg_0x2b657563a020) {
+  switch (arg_0x2b05ee250020) {
 #line 92
     case 0U:
 #line 92
@@ -12025,7 +11855,7 @@ inline static void Atm128SpiP__Resource__granted(uint8_t arg_0x2b657563a020){
 #line 92
     default:
 #line 92
-      Atm128SpiP__Resource__default__granted(arg_0x2b657563a020);
+      Atm128SpiP__Resource__default__granted(arg_0x2b05ee250020);
 #line 92
       break;
 #line 92
@@ -12041,9 +11871,9 @@ static inline void Atm128SpiP__ResourceArbiter__granted(uint8_t id)
 }
 
 # 92 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Resource.nc"
-inline static void /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__Resource__granted(uint8_t arg_0x2b6575737020){
+inline static void /*Atm128SpiC.Arbiter.Arbiter*/SimpleArbiterP__0__Resource__granted(uint8_t arg_0x2b05ee34e020){
 #line 92
-  Atm128SpiP__ResourceArbiter__granted(arg_0x2b6575737020);
+  Atm128SpiP__ResourceArbiter__granted(arg_0x2b05ee34e020);
 #line 92
 }
 #line 92
@@ -12595,9 +12425,9 @@ static inline void CC2420SpiP__Fifo__default__readDone(uint8_t addr, uint8_t *rx
 }
 
 # 71 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/interfaces/CC2420Fifo.nc"
-inline static void CC2420SpiP__Fifo__readDone(uint8_t arg_0x2b657559f020, uint8_t * data, uint8_t length, error_t error){
+inline static void CC2420SpiP__Fifo__readDone(uint8_t arg_0x2b05ee1b5020, uint8_t * data, uint8_t length, error_t error){
 #line 71
-  switch (arg_0x2b657559f020) {
+  switch (arg_0x2b05ee1b5020) {
 #line 71
     case CC2420_TXFIFO:
 #line 71
@@ -12613,7 +12443,7 @@ inline static void CC2420SpiP__Fifo__readDone(uint8_t arg_0x2b657559f020, uint8_
 #line 71
     default:
 #line 71
-      CC2420SpiP__Fifo__default__readDone(arg_0x2b657559f020, data, length, error);
+      CC2420SpiP__Fifo__default__readDone(arg_0x2b05ee1b5020, data, length, error);
 #line 71
       break;
 #line 71
@@ -12700,9 +12530,9 @@ message_t *msg)
 }
 
 # 81 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/interfaces/RadioBackoff.nc"
-inline static void CC2420ActiveMessageP__RadioBackoff__requestInitialBackoff(am_id_t arg_0x2b6575c5dd60, message_t * msg){
+inline static void CC2420ActiveMessageP__RadioBackoff__requestInitialBackoff(am_id_t arg_0x2b05ee874d60, message_t * msg){
 #line 81
-    CC2420ActiveMessageP__RadioBackoff__default__requestInitialBackoff(arg_0x2b6575c5dd60, msg);
+    CC2420ActiveMessageP__RadioBackoff__default__requestInitialBackoff(arg_0x2b05ee874d60, msg);
 #line 81
 }
 #line 81
@@ -12915,9 +12745,9 @@ static inline void CC2420SpiP__Fifo__default__writeDone(uint8_t addr, uint8_t *t
 }
 
 # 91 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/interfaces/CC2420Fifo.nc"
-inline static void CC2420SpiP__Fifo__writeDone(uint8_t arg_0x2b657559f020, uint8_t * data, uint8_t length, error_t error){
+inline static void CC2420SpiP__Fifo__writeDone(uint8_t arg_0x2b05ee1b5020, uint8_t * data, uint8_t length, error_t error){
 #line 91
-  switch (arg_0x2b657559f020) {
+  switch (arg_0x2b05ee1b5020) {
 #line 91
     case CC2420_TXFIFO:
 #line 91
@@ -12933,7 +12763,7 @@ inline static void CC2420SpiP__Fifo__writeDone(uint8_t arg_0x2b657559f020, uint8
 #line 91
     default:
 #line 91
-      CC2420SpiP__Fifo__default__writeDone(arg_0x2b657559f020, data, length, error);
+      CC2420SpiP__Fifo__default__writeDone(arg_0x2b05ee1b5020, data, length, error);
 #line 91
       break;
 #line 91
@@ -12992,9 +12822,9 @@ message_t *msg)
 }
 
 # 88 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/interfaces/RadioBackoff.nc"
-inline static void CC2420ActiveMessageP__RadioBackoff__requestCongestionBackoff(am_id_t arg_0x2b6575c5dd60, message_t * msg){
+inline static void CC2420ActiveMessageP__RadioBackoff__requestCongestionBackoff(am_id_t arg_0x2b05ee874d60, message_t * msg){
 #line 88
-    CC2420ActiveMessageP__RadioBackoff__default__requestCongestionBackoff(arg_0x2b6575c5dd60, msg);
+    CC2420ActiveMessageP__RadioBackoff__default__requestCongestionBackoff(arg_0x2b05ee874d60, msg);
 #line 88
 }
 #line 88
@@ -13719,9 +13549,9 @@ static inline void CC2420SpiP__Resource__default__granted(uint8_t id)
 }
 
 # 92 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Resource.nc"
-inline static void CC2420SpiP__Resource__granted(uint8_t arg_0x2b65755a1da0){
+inline static void CC2420SpiP__Resource__granted(uint8_t arg_0x2b05ee1b8da0){
 #line 92
-  switch (arg_0x2b65755a1da0) {
+  switch (arg_0x2b05ee1b8da0) {
 #line 92
     case /*CC2420ControlC.Spi*/CC2420SpiC__0__CLIENT_ID:
 #line 92
@@ -13755,7 +13585,7 @@ inline static void CC2420SpiP__Resource__granted(uint8_t arg_0x2b65755a1da0){
 #line 92
     default:
 #line 92
-      CC2420SpiP__Resource__default__granted(arg_0x2b65755a1da0);
+      CC2420SpiP__Resource__default__granted(arg_0x2b05ee1b8da0);
 #line 92
       break;
 #line 92
@@ -14039,9 +13869,9 @@ inline static void CC2420TinyosNetworkP__BareSend__sendDone(message_t * msg, err
 }
 #line 89
 # 99 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/AMSend.nc"
-inline static void CC2420ActiveMessageP__AMSend__sendDone(am_id_t arg_0x2b6575c636c0, message_t * msg, error_t error){
+inline static void CC2420ActiveMessageP__AMSend__sendDone(am_id_t arg_0x2b05ee87a6c0, message_t * msg, error_t error){
 #line 99
-  BaseStationP__RadioSend__sendDone(arg_0x2b6575c636c0, msg, error);
+  BaseStationP__RadioSend__sendDone(arg_0x2b05ee87a6c0, msg, error);
 #line 99
 }
 #line 99
@@ -14347,9 +14177,9 @@ static inline void CC2420CsmaP__sendDone_task__runTask(void )
   CC2420CsmaP__Send__sendDone(CC2420CsmaP__m_msg, packetErr);
 }
 
-# 135 "BaseStationP.nc"
+# 136 "BaseStationP.nc"
 static inline void BaseStationP__RadioControl__stopDone(error_t error)
-#line 135
+#line 136
 {
 }
 
@@ -14368,9 +14198,9 @@ static inline void CC2420CsmaP__stopDone_task__runTask(void )
   CC2420CsmaP__SplitControl__stopDone(SUCCESS);
 }
 
-# 122 "BaseStationP.nc"
+# 123 "BaseStationP.nc"
 static inline void BaseStationP__RadioControl__startDone(error_t error)
-#line 122
+#line 123
 {
   if (error == SUCCESS) {
       BaseStationP__radioFull = FALSE;
@@ -14909,9 +14739,9 @@ static inline void CC2420ActiveMessageP__SendNotifier__default__aboutToSend(am_i
 }
 
 # 59 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/SendNotifier.nc"
-inline static void CC2420ActiveMessageP__SendNotifier__aboutToSend(am_id_t arg_0x2b6575c5d258, am_addr_t dest, message_t * msg){
+inline static void CC2420ActiveMessageP__SendNotifier__aboutToSend(am_id_t arg_0x2b05ee874258, am_addr_t dest, message_t * msg){
 #line 59
-    CC2420ActiveMessageP__SendNotifier__default__aboutToSend(arg_0x2b6575c5d258, dest, msg);
+    CC2420ActiveMessageP__SendNotifier__default__aboutToSend(arg_0x2b05ee874258, dest, msg);
 #line 59
 }
 #line 59
@@ -15067,13 +14897,13 @@ uint8_t len)
 }
 
 # 69 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/AMSend.nc"
-inline static error_t BaseStationP__RadioSend__send(am_id_t arg_0x2b657501acb0, am_addr_t addr, message_t * msg, uint8_t len){
+inline static error_t BaseStationP__RadioSend__send(am_id_t arg_0x2b05edc2bcb0, am_addr_t addr, message_t * msg, uint8_t len){
 #line 69
   unsigned char __nesc_result;
 #line 69
 
 #line 69
-  __nesc_result = CC2420ActiveMessageP__AMSend__send(arg_0x2b657501acb0, addr, msg, len);
+  __nesc_result = CC2420ActiveMessageP__AMSend__send(arg_0x2b05edc2bcb0, addr, msg, len);
 #line 69
 
 #line 69
@@ -15228,14 +15058,14 @@ inline static uint8_t BaseStationP__UartPacket__payloadLength(message_t * msg){
 #line 67
 }
 #line 67
-# 311 "BaseStationP.nc"
+# 286 "BaseStationP.nc"
 static inline void BaseStationP__radioSendTask__runTask(void )
-#line 311
+#line 286
 {
   uint8_t len;
   am_id_t id;
   am_addr_t addr;
-#line 314
+#line 289
   am_addr_t source;
   message_t *msg;
 
@@ -15244,13 +15074,13 @@ static inline void BaseStationP__radioSendTask__runTask(void )
       {
         BaseStationP__radioBusy = FALSE;
         {
-#line 321
+#line 296
           __nesc_atomic_end(__nesc_atomic); 
-#line 321
+#line 296
           return;
         }
       }
-#line 323
+#line 298
     __nesc_atomic_end(__nesc_atomic); }
   msg = BaseStationP__radioQueue[BaseStationP__radioOut];
   len = BaseStationP__UartPacket__payloadLength(msg);
@@ -15268,6 +15098,18 @@ static inline void BaseStationP__radioSendTask__runTask(void )
       BaseStationP__failBlink();
       BaseStationP__radioSendTask__postTask();
     }
+}
+
+# 48 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/atm128/pins/HplAtm128GeneralIOPinP.nc"
+static inline void /*HplAtm128GeneralIOC.PortA.Bit1*/HplAtm128GeneralIOPinP__1__IO__toggle(void )
+#line 48
+{
+#line 48
+  { __nesc_atomic_t __nesc_atomic = __nesc_atomic_start();
+#line 48
+    * (volatile uint8_t * )59U ^= 1 << 1;
+#line 48
+    __nesc_atomic_end(__nesc_atomic); }
 }
 
 # 31 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/GeneralIO.nc"
@@ -15294,14 +15136,207 @@ inline static void BaseStationP__Leds__led1Toggle(void ){
 #line 72
 }
 #line 72
+# 315 "/usr/lib/ncc/nesc_nx.h"
+static __inline  uint16_t __nesc_hton_uint16(void * target, uint16_t value)
+#line 315
+{
+  uint8_t *base = target;
+
+#line 317
+  base[1] = value;
+  base[0] = value >> 8;
+  return value;
+}
+
+# 522 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/serial/SerialP.nc"
+static inline error_t SerialP__SendBytePacket__startSend(uint8_t b)
+#line 522
+{
+  bool not_busy = FALSE;
+
+#line 524
+  { __nesc_atomic_t __nesc_atomic = __nesc_atomic_start();
+#line 524
+    {
+      if (SerialP__txBuf[SerialP__TX_DATA_INDEX].state == SerialP__BUFFER_AVAILABLE) {
+          SerialP__txBuf[SerialP__TX_DATA_INDEX].state = SerialP__BUFFER_FILLING;
+          SerialP__txBuf[SerialP__TX_DATA_INDEX].buf = b;
+          not_busy = TRUE;
+        }
+    }
+#line 530
+    __nesc_atomic_end(__nesc_atomic); }
+  if (not_busy) {
+      SerialP__MaybeScheduleTx();
+      return SUCCESS;
+    }
+  return EBUSY;
+}
+
+# 51 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/serial/SendBytePacket.nc"
+inline static error_t /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__SendBytePacket__startSend(uint8_t first_byte){
+#line 51
+  unsigned char __nesc_result;
+#line 51
+
+#line 51
+  __nesc_result = SerialP__SendBytePacket__startSend(first_byte);
+#line 51
+
+#line 51
+  return __nesc_result;
+#line 51
+}
+#line 51
+# 43 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/serial/SerialPacketInfoActiveMessageP.nc"
+static inline uint8_t SerialPacketInfoActiveMessageP__Info__dataLinkLength(message_t *msg, uint8_t upperLen)
+#line 43
+{
+  return upperLen + sizeof(serial_header_t );
+}
+
+# 350 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/serial/SerialDispatcherP.nc"
+static inline uint8_t /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__PacketInfo__default__dataLinkLength(uart_id_t id, message_t *msg, 
+uint8_t upperLen)
+#line 351
+{
+  return 0;
+}
+
+# 23 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/serial/SerialPacketInfo.nc"
+inline static uint8_t /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__PacketInfo__dataLinkLength(uart_id_t arg_0x2b05eea32308, message_t *msg, uint8_t upperLen){
+#line 23
+  unsigned char __nesc_result;
+#line 23
+
+#line 23
+  switch (arg_0x2b05eea32308) {
+#line 23
+    case TOS_SERIAL_ACTIVE_MESSAGE_ID:
+#line 23
+      __nesc_result = SerialPacketInfoActiveMessageP__Info__dataLinkLength(msg, upperLen);
+#line 23
+      break;
+#line 23
+    default:
+#line 23
+      __nesc_result = /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__PacketInfo__default__dataLinkLength(arg_0x2b05eea32308, msg, upperLen);
+#line 23
+      break;
+#line 23
+    }
+#line 23
+
+#line 23
+  return __nesc_result;
+#line 23
+}
+#line 23
+# 100 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/serial/SerialDispatcherP.nc"
+static inline error_t /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__Send__send(uint8_t id, message_t *msg, uint8_t len)
+#line 100
+{
+  if (/*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__sendState != /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__SEND_STATE_IDLE) {
+      return EBUSY;
+    }
+
+  { __nesc_atomic_t __nesc_atomic = __nesc_atomic_start();
+#line 105
+    {
+      /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__sendIndex = /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__PacketInfo__offset(id);
+      if (/*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__sendIndex > sizeof(message_header_t )) {
+          {
+            unsigned char __nesc_temp = 
+#line 108
+            ESIZE;
+
+            {
+#line 108
+              __nesc_atomic_end(__nesc_atomic); 
+#line 108
+              return __nesc_temp;
+            }
+          }
+        }
+#line 111
+      /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__sendError = SUCCESS;
+      /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__sendBuffer = (uint8_t *)msg;
+      /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__sendState = /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__SEND_STATE_DATA;
+      /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__sendId = id;
+      /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__sendCancelled = FALSE;
+
+
+
+
+
+
+      /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__sendLen = /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__PacketInfo__dataLinkLength(id, msg, len) + /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__sendIndex;
+    }
+#line 123
+    __nesc_atomic_end(__nesc_atomic); }
+  if (/*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__SendBytePacket__startSend(id) == SUCCESS) {
+      return SUCCESS;
+    }
+  else {
+      /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__sendState = /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__SEND_STATE_IDLE;
+      return FAIL;
+    }
+}
+
+# 64 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Send.nc"
+inline static error_t /*SerialActiveMessageC.AM*/SerialActiveMessageP__0__SubSend__send(message_t * msg, uint8_t len){
+#line 64
+  unsigned char __nesc_result;
+#line 64
+
+#line 64
+  __nesc_result = /*SerialDispatcherC.SerialDispatcherP*/SerialDispatcherP__0__Send__send(TOS_SERIAL_ACTIVE_MESSAGE_ID, msg, len);
+#line 64
+
+#line 64
+  return __nesc_result;
+#line 64
+}
+#line 64
+# 120 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/serial/SerialActiveMessageP.nc"
+static inline uint8_t /*SerialActiveMessageC.AM*/SerialActiveMessageP__0__Packet__maxPayloadLength(void )
+#line 120
+{
+  return 28;
+}
+
+#line 57
+static inline error_t /*SerialActiveMessageC.AM*/SerialActiveMessageP__0__AMSend__send(am_id_t id, am_addr_t dest, 
+message_t *msg, 
+uint8_t len)
+#line 59
+{
+  serial_header_t *header = /*SerialActiveMessageC.AM*/SerialActiveMessageP__0__getHeader(msg);
+
+  if (len > /*SerialActiveMessageC.AM*/SerialActiveMessageP__0__Packet__maxPayloadLength()) {
+      return ESIZE;
+    }
+
+  __nesc_hton_uint16(header->dest.nxdata, dest);
+
+
+
+
+
+  __nesc_hton_uint8(header->type.nxdata, id);
+  __nesc_hton_uint8(header->length.nxdata, len);
+
+  return /*SerialActiveMessageC.AM*/SerialActiveMessageP__0__SubSend__send(msg, len);
+}
+
 # 69 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/AMSend.nc"
-inline static error_t BaseStationP__UartSend__send(am_id_t arg_0x2b65750198c0, am_addr_t addr, message_t * msg, uint8_t len){
+inline static error_t BaseStationP__UartSend__send(am_id_t arg_0x2b05edc2a8c0, am_addr_t addr, message_t * msg, uint8_t len){
 #line 69
   unsigned char __nesc_result;
 #line 69
 
 #line 69
-  __nesc_result = /*SerialActiveMessageC.AM*/SerialActiveMessageP__0__AMSend__send(arg_0x2b65750198c0, addr, msg, len);
+  __nesc_result = /*SerialActiveMessageC.AM*/SerialActiveMessageP__0__AMSend__send(arg_0x2b05edc2a8c0, addr, msg, len);
 #line 69
 
 #line 69
@@ -15309,6 +15344,16 @@ inline static error_t BaseStationP__UartSend__send(am_id_t arg_0x2b65750198c0, a
 #line 69
 }
 #line 69
+# 152 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/serial/SerialActiveMessageP.nc"
+static inline void /*SerialActiveMessageC.AM*/SerialActiveMessageP__0__AMPacket__setSource(message_t *amsg, am_addr_t addr)
+#line 152
+{
+  serial_header_t *header = /*SerialActiveMessageC.AM*/SerialActiveMessageP__0__getHeader(amsg);
+
+#line 154
+  __nesc_hton_uint16(header->src.nxdata, addr);
+}
+
 # 110 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/AMPacket.nc"
 inline static void BaseStationP__UartAMPacket__setSource(message_t * amsg, am_addr_t addr){
 #line 110
@@ -15316,6 +15361,14 @@ inline static void BaseStationP__UartAMPacket__setSource(message_t * amsg, am_ad
 #line 110
 }
 #line 110
+# 106 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/serial/SerialActiveMessageP.nc"
+static inline void /*SerialActiveMessageC.AM*/SerialActiveMessageP__0__Packet__clear(message_t *msg)
+#line 106
+{
+  memset(/*SerialActiveMessageC.AM*/SerialActiveMessageP__0__getHeader(msg), 0, sizeof(serial_header_t ));
+  return;
+}
+
 # 54 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Packet.nc"
 inline static void BaseStationP__UartPacket__clear(message_t * msg){
 #line 54
@@ -15323,6 +15376,16 @@ inline static void BaseStationP__UartPacket__clear(message_t * msg){
 #line 54
 }
 #line 54
+# 131 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/CC2420ActiveMessageP.nc"
+static inline am_addr_t CC2420ActiveMessageP__AMPacket__source(message_t *amsg)
+#line 131
+{
+  cc2420_header_t *header = CC2420ActiveMessageP__CC2420PacketBody__getHeader(amsg);
+
+#line 133
+  return __nesc_ntoh_leuint16(header->src.nxdata);
+}
+
 # 77 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/AMPacket.nc"
 inline static am_addr_t BaseStationP__RadioAMPacket__source(message_t * amsg){
 #line 77
@@ -15368,6 +15431,13 @@ inline static am_id_t BaseStationP__RadioAMPacket__type(message_t * amsg){
 #line 136
 }
 #line 136
+# 181 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/CC2420ActiveMessageP.nc"
+static inline uint8_t CC2420ActiveMessageP__Packet__payloadLength(message_t *msg)
+#line 181
+{
+  return __nesc_ntoh_leuint8(CC2420ActiveMessageP__CC2420PacketBody__getHeader(msg)->length.nxdata) - CC2420_SIZE;
+}
+
 # 67 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/Packet.nc"
 inline static uint8_t BaseStationP__RadioPacket__payloadLength(message_t * msg){
 #line 67
@@ -15383,14 +15453,14 @@ inline static uint8_t BaseStationP__RadioPacket__payloadLength(message_t * msg){
 #line 67
 }
 #line 67
-# 233 "BaseStationP.nc"
+# 208 "BaseStationP.nc"
 static inline void BaseStationP__uartSendTask__runTask(void )
-#line 233
+#line 208
 {
   uint8_t len;
   am_id_t id;
   am_addr_t addr;
-#line 236
+#line 211
   am_addr_t src;
   message_t *msg;
 
@@ -15399,13 +15469,13 @@ static inline void BaseStationP__uartSendTask__runTask(void )
       {
         BaseStationP__uartBusy = FALSE;
         {
-#line 243
+#line 218
           __nesc_atomic_end(__nesc_atomic); 
-#line 243
+#line 218
           return;
         }
       }
-#line 245
+#line 220
     __nesc_atomic_end(__nesc_atomic); }
   msg = BaseStationP__uartQueue[BaseStationP__uartOut];
   BaseStationP__tmpLen = len = BaseStationP__RadioPacket__payloadLength(msg);
@@ -16087,9 +16157,9 @@ inline static error_t BaseStationP__RadioControl__start(void ){
 #line 83
 }
 #line 83
-# 102 "BaseStationP.nc"
+# 103 "BaseStationP.nc"
 static inline void BaseStationP__Boot__booted(void )
-#line 102
+#line 103
 {
   uint8_t i;
 
@@ -18161,9 +18231,9 @@ static void SchedulerBasicP__TaskBasic__default__runTask(uint8_t id)
 }
 
 # 64 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/interfaces/TaskBasic.nc"
-static void SchedulerBasicP__TaskBasic__runTask(uint8_t arg_0x2b6574dbe960){
+static void SchedulerBasicP__TaskBasic__runTask(uint8_t arg_0x2b05ed9cf960){
 #line 64
-  switch (arg_0x2b6574dbe960) {
+  switch (arg_0x2b05ed9cf960) {
 #line 64
     case BaseStationP__uartSendTask:
 #line 64
@@ -18293,7 +18363,7 @@ static void SchedulerBasicP__TaskBasic__runTask(uint8_t arg_0x2b6574dbe960){
 #line 64
     default:
 #line 64
-      SchedulerBasicP__TaskBasic__default__runTask(arg_0x2b6574dbe960);
+      SchedulerBasicP__TaskBasic__default__runTask(arg_0x2b05ed9cf960);
 #line 64
       break;
 #line 64
@@ -18888,30 +18958,30 @@ static void UniqueSendP__State__toIdle(void ){
 #line 56
 }
 #line 56
-# 342 "BaseStationP.nc"
+# 317 "BaseStationP.nc"
 static void BaseStationP__RadioSend__sendDone(am_id_t id, message_t *msg, error_t error)
-#line 342
+#line 317
 {
   if (error != SUCCESS) {
     BaseStationP__failBlink();
     }
   else {
-#line 346
+#line 321
     { __nesc_atomic_t __nesc_atomic = __nesc_atomic_start();
       if (msg == BaseStationP__radioQueue[BaseStationP__radioOut]) 
         {
           if (++BaseStationP__radioOut >= BaseStationP__RADIO_QUEUE_LEN) {
             BaseStationP__radioOut = 0;
             }
-#line 351
+#line 326
           if (BaseStationP__radioFull) {
             BaseStationP__radioFull = FALSE;
             }
         }
-#line 354
+#line 329
       __nesc_atomic_end(__nesc_atomic); }
     }
-#line 355
+#line 330
   BaseStationP__radioSendTask__postTask();
 }
 
@@ -19126,17 +19196,18 @@ static am_addr_t ActiveMessageAddressC__amAddress(void )
   return myAddr;
 }
 
-# 189 "BaseStationP.nc"
+# 156 "BaseStationP.nc"
 static message_t *BaseStationP__receive(message_t *msg, void *payload, uint8_t len)
-#line 189
+#line 156
 {
   message_t *ret = msg;
   BlinkToRadioMsg *btrpkt;
+  BlinkToRadioMsg *firePayload;
   bool all_fire = TRUE;
   int i;
 
   { __nesc_atomic_t __nesc_atomic = __nesc_atomic_start();
-#line 195
+#line 163
     {
       if (!BaseStationP__uartFull) 
         {
@@ -19150,13 +19221,20 @@ static message_t *BaseStationP__receive(message_t *msg, void *payload, uint8_t l
             }
           if (all_fire) 
             {
-              BaseStationP__uartSendFire(msg);
+              BaseStationP__fireMsg = *msg;
+              firePayload = (BlinkToRadioMsg *)BaseStationP__RadioPacket__getPayload(&BaseStationP__fireMsg, sizeof(BlinkToRadioMsg ));
+              __nesc_hton_uint16(firePayload->nodeid.nxdata, TOS_NODE_ID);
+              __nesc_hton_int8(firePayload->fire.nxdata, TRUE);
+              BaseStationP__uartQueue[BaseStationP__uartIn] = &BaseStationP__fireMsg;
+              BaseStationP__uartIn = (BaseStationP__uartIn + 1) % BaseStationP__UART_QUEUE_LEN;
             }
 
           ret = BaseStationP__uartQueue[BaseStationP__uartIn];
           BaseStationP__uartQueue[BaseStationP__uartIn] = msg;
 
           BaseStationP__uartIn = (BaseStationP__uartIn + 1) % BaseStationP__UART_QUEUE_LEN;
+
+
 
           if (BaseStationP__uartIn == BaseStationP__uartOut) {
             BaseStationP__uartFull = TRUE;
@@ -19171,58 +19249,12 @@ static message_t *BaseStationP__receive(message_t *msg, void *payload, uint8_t l
         BaseStationP__dropBlink();
         }
     }
-#line 228
+#line 203
     __nesc_atomic_end(__nesc_atomic); }
   return ret;
 }
 
-#line 155
-static void BaseStationP__uartSendFire(message_t *msg)
-#line 155
-{
-  uint8_t len;
-  am_id_t id;
-  am_addr_t addr;
-#line 158
-  am_addr_t src;
-  BlinkToRadioMsg *btrpkt;
-
-  /* atomic removed: atomic calls only */
-  if (BaseStationP__uartIn == BaseStationP__uartOut && !BaseStationP__uartFull) 
-    {
-      BaseStationP__uartBusy = FALSE;
-      return;
-    }
-
-  btrpkt = (BlinkToRadioMsg *)BaseStationP__RadioPacket__getPayload(msg, sizeof(BlinkToRadioMsg ));
-  __nesc_hton_uint16(btrpkt->nodeid.nxdata, TOS_NODE_ID);
-  __nesc_hton_uint16(btrpkt->temp.nxdata, 0);
-  __nesc_hton_uint16(btrpkt->light.nxdata, 0);
-  __nesc_hton_int8(btrpkt->fire.nxdata, TRUE);
-  BaseStationP__tmpLen = len = BaseStationP__RadioPacket__payloadLength(msg);
-  id = BaseStationP__RadioAMPacket__type(msg);
-  addr = BaseStationP__RadioAMPacket__destination(msg);
-  src = BaseStationP__RadioAMPacket__source(msg);
-  BaseStationP__UartPacket__clear(msg);
-  BaseStationP__UartAMPacket__setSource(msg, src);
-
-  if (BaseStationP__UartSend__send(id, addr, msg, len) == SUCCESS) {
-    BaseStationP__Leds__led1Toggle();
-    }
-  else {
-      BaseStationP__failBlink();
-      BaseStationP__uartSendFire(msg);
-    }
-}
-
-# 181 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/CC2420ActiveMessageP.nc"
-static uint8_t CC2420ActiveMessageP__Packet__payloadLength(message_t *msg)
-#line 181
-{
-  return __nesc_ntoh_leuint8(CC2420ActiveMessageP__CC2420PacketBody__getHeader(msg)->length.nxdata) - CC2420_SIZE;
-}
-
-#line 151
+# 151 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/CC2420ActiveMessageP.nc"
 static am_id_t CC2420ActiveMessageP__AMPacket__type(message_t *amsg)
 #line 151
 {
@@ -19230,70 +19262,6 @@ static am_id_t CC2420ActiveMessageP__AMPacket__type(message_t *amsg)
 
 #line 153
   return __nesc_ntoh_leuint8(header->type.nxdata);
-}
-
-#line 131
-static am_addr_t CC2420ActiveMessageP__AMPacket__source(message_t *amsg)
-#line 131
-{
-  cc2420_header_t *header = CC2420ActiveMessageP__CC2420PacketBody__getHeader(amsg);
-
-#line 133
-  return __nesc_ntoh_leuint16(header->src.nxdata);
-}
-
-# 106 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/lib/serial/SerialActiveMessageP.nc"
-static void /*SerialActiveMessageC.AM*/SerialActiveMessageP__0__Packet__clear(message_t *msg)
-#line 106
-{
-  memset(/*SerialActiveMessageC.AM*/SerialActiveMessageP__0__getHeader(msg), 0, sizeof(serial_header_t ));
-  return;
-}
-
-#line 152
-static void /*SerialActiveMessageC.AM*/SerialActiveMessageP__0__AMPacket__setSource(message_t *amsg, am_addr_t addr)
-#line 152
-{
-  serial_header_t *header = /*SerialActiveMessageC.AM*/SerialActiveMessageP__0__getHeader(amsg);
-
-#line 154
-  __nesc_hton_uint16(header->src.nxdata, addr);
-}
-
-#line 57
-static error_t /*SerialActiveMessageC.AM*/SerialActiveMessageP__0__AMSend__send(am_id_t id, am_addr_t dest, 
-message_t *msg, 
-uint8_t len)
-#line 59
-{
-  serial_header_t *header = /*SerialActiveMessageC.AM*/SerialActiveMessageP__0__getHeader(msg);
-
-  if (len > /*SerialActiveMessageC.AM*/SerialActiveMessageP__0__Packet__maxPayloadLength()) {
-      return ESIZE;
-    }
-
-  __nesc_hton_uint16(header->dest.nxdata, dest);
-
-
-
-
-
-  __nesc_hton_uint8(header->type.nxdata, id);
-  __nesc_hton_uint8(header->length.nxdata, len);
-
-  return /*SerialActiveMessageC.AM*/SerialActiveMessageP__0__SubSend__send(msg, len);
-}
-
-# 48 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/atm128/pins/HplAtm128GeneralIOPinP.nc"
-static void /*HplAtm128GeneralIOC.PortA.Bit1*/HplAtm128GeneralIOPinP__1__IO__toggle(void )
-#line 48
-{
-#line 48
-  { __nesc_atomic_t __nesc_atomic = __nesc_atomic_start();
-#line 48
-    * (volatile uint8_t * )59U ^= 1 << 1;
-#line 48
-    __nesc_atomic_end(__nesc_atomic); }
 }
 
 # 764 "/homes/gc1610/3/pervasive/TinyOS/tinyos-2.1.1/tos/chips/cc2420/receive/CC2420ReceiveP.nc"

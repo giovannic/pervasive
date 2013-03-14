@@ -82,6 +82,7 @@ implementation
   bool       uartBusy, uartFull;
 
   message_t  radioQueueBufs[RADIO_QUEUE_LEN];
+  message_t  fireMsg;
   message_t  * ONE_NOK radioQueue[RADIO_QUEUE_LEN];
   uint8_t    radioIn, radioOut;
   bool       radioBusy, radioFull;
@@ -152,43 +153,10 @@ implementation
 
   uint8_t tmpLen;
 
-  void uartSendFire(message_t* msg) {
-    uint8_t len;
-    am_id_t id;
-    am_addr_t addr, src;
-    BlinkToRadioMsg *btrpkt;
-
-    atomic
-      if (uartIn == uartOut && !uartFull)
-	{
-	  uartBusy = FALSE;
-	  return;
-	}
-
-    btrpkt = (BlinkToRadioMsg*)(call RadioPacket.getPayload(msg, sizeof (BlinkToRadioMsg)));
-    btrpkt->nodeid = TOS_NODE_ID;
-    btrpkt->temp = 0;
-    btrpkt->light = 0;
-    btrpkt->fire = TRUE;
-    tmpLen = len = call RadioPacket.payloadLength(msg);
-    id = call RadioAMPacket.type(msg);
-    addr = call RadioAMPacket.destination(msg);
-    src = call RadioAMPacket.source(msg);
-    call UartPacket.clear(msg);
-    call UartAMPacket.setSource(msg, src);
-
-    if (call UartSend.send[id](addr, msg, len) == SUCCESS)
-      call Leds.led1Toggle();
-    else
-      {
-	failBlink();
-	uartSendFire(msg);
-      }
-  }
-
   message_t* receive(message_t *msg, void *payload, uint8_t len) {
     message_t *ret = msg;
     BlinkToRadioMsg* btrpkt;
+    BlinkToRadioMsg* firePayload;
     bool all_fire = TRUE;
     int i;
 
@@ -205,13 +173,20 @@ implementation
           } 
           if (all_fire)
           {
-            uartSendFire(msg);
+            fireMsg = *msg;
+            firePayload = (BlinkToRadioMsg *)(call RadioPacket.getPayload(&fireMsg, sizeof (BlinkToRadioMsg)));
+            firePayload->nodeid = TOS_NODE_ID;
+            firePayload->fire = TRUE;
+	    uartQueue[uartIn] = &fireMsg;
+	    uartIn = (uartIn + 1) % UART_QUEUE_LEN;
           }
 
 	  ret = uartQueue[uartIn];
 	  uartQueue[uartIn] = msg;
 
 	  uartIn = (uartIn + 1) % UART_QUEUE_LEN;
+
+
 	
 	  if (uartIn == uartOut)
 	    uartFull = TRUE;
